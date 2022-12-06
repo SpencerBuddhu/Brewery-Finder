@@ -22,6 +22,7 @@ CREATE TABLE addresses (
 
 CREATE TABLE breweries (
     brewery_id serial,
+    brewery_name varchar(100) NOT NULL,
     user_id int NOT NULL,
     website_url varchar(100),
     email_address varchar(100),
