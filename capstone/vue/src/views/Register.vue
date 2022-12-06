@@ -51,7 +51,7 @@ export default {
         username: '',
         password: '',
         confirmPassword: '',
-        role: 'user',
+        role: 'beerlover',
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
