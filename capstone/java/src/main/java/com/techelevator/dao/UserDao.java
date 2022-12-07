@@ -9,6 +9,8 @@ public interface UserDao {
 
     void upgradeUser(NewBreweryDto newBreweryDto);
 
+    List<User> findAllBeerLovers();
+
     List<User> findAll();
 
     User getUserById(int userId);

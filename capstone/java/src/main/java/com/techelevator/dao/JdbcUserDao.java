@@ -44,6 +44,20 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
+    public List<User> findAllBeerLovers() {
+        List<User> users = new ArrayList<>();
+        String sql = "select * from users where role = 'ROLE_BEERLOVER';";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            User user = mapRowToUser(results);
+            users.add(user);
+        }
+
+        return users;
+    }
+
+    @Override
 	public User getUserById(int userId) {
 		String sql = "SELECT * FROM users WHERE user_id = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);

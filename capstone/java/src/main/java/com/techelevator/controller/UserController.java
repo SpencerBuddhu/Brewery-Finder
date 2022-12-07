@@ -20,7 +20,7 @@ public class UserController {
 
     @RequestMapping(path = "/users", method = RequestMethod.GET)
     public List<User> listUsers() {
-        return userDao.findAll();
+        return userDao.findAllBeerLovers();
     }
 
 
