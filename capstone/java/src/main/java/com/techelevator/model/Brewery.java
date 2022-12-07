@@ -1,5 +1,8 @@
 package com.techelevator.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Brewery {
 
     private int breweryId;
@@ -7,33 +10,27 @@ public class Brewery {
     private int userId;
     private String websiteUrl;
     private String emailAddress;
-    private int addressId;
+    private Address address = null;
+    private List<Hours> hours = new ArrayList<>();
     private String phoneNumber;
     private String breweryHistory;
     private String breweryLogo;
     private String breweryImage;
     private Boolean isActive;
-    private String streetAddress;
-    private String city;
-    private String state;
-    private int zipcode;
 
-    public Brewery(int breweryId, String breweryName, int userId, String websiteUrl, String emailAddress, int addressId, String phoneNumber, String breweryHistory, String breweryLogo, String breweryImage, Boolean isActive, String streetAddress, String city, String state, int zipcode) {
+    public Brewery(int breweryId, String breweryName, int userId, String websiteUrl, String emailAddress, Address address, List<Hours> hours, String phoneNumber, String breweryHistory, String breweryLogo, String breweryImage, Boolean isActive) {
         this.breweryId = breweryId;
         this.breweryName = breweryName;
         this.userId = userId;
         this.websiteUrl = websiteUrl;
         this.emailAddress = emailAddress;
-        this.addressId = addressId;
+        this.address = address;
+        this.hours = hours;
         this.phoneNumber = phoneNumber;
         this.breweryHistory = breweryHistory;
         this.breweryLogo = breweryLogo;
         this.breweryImage = breweryImage;
         this.isActive = isActive;
-        this.streetAddress = streetAddress;
-        this.city = city;
-        this.state = state;
-        this.zipcode = zipcode;
     }
 
     public Brewery(){}
@@ -79,14 +76,6 @@ public class Brewery {
         this.emailAddress = emailAddress;
     }
 
-    public int getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -119,43 +108,27 @@ public class Brewery {
         isActive = active;
     }
 
-    public String getStreetAddress() {
-        return streetAddress;
-    }
-
-    public void setStreetAddress(String streetAddress) {
-        this.streetAddress = streetAddress;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public int getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(int zipcode) {
-        this.zipcode = zipcode;
-    }
-
     public String getBreweryImage() {
         return breweryImage;
     }
 
     public void setBreweryImage(String breweryImage) {
         this.breweryImage = breweryImage;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<Hours> getHours() {
+        return hours;
+    }
+
+    public void setHours(List<Hours> hours) {
+        this.hours = hours;
     }
 }
