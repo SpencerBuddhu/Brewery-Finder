@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 
 import com.techelevator.model.Brewery;
+import com.techelevator.model.NewBreweryDto;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -20,7 +21,7 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public List<Brewery> listBreweries() {
         List<Brewery> breweries = new ArrayList<>();
-        String sql = "SELECT brewery_id, brewery_name, user_id, website_url, email_address, address_id, phone_number, brewery_history, brewery_logo\n" +
+        String sql = "SELECT brewery_id, brewery_name, user_id, website_url, email_address, address_id, phone_number, brewery_history, brewery_logo, brewery_image \n" +
                 "FROM breweries\n" +
                 "WHERE is_active = true";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -34,7 +35,7 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public Brewery getBreweryById(int breweryId) {
         Brewery brewery = null;
-        String sql = "SELECT brewery_id, brewery_name, user_id, website_url, email_address, address_id, phone_number, brewery_history, brewery_logo \n" +
+        String sql = "SELECT brewery_id, brewery_name, user_id, website_url, email_address, address_id, phone_number, brewery_history, brewery_logo, brewery_image \n" +
                 "FROM breweries \n" +
                 "WHERE is_active = true AND brewery_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
@@ -45,16 +46,11 @@ public class JdbcBreweryDao implements BreweryDao {
     }
 
     @Override
-    public void addBrewery(Brewery newBrewery) {
-        String sql = "WITH add_brewery AS (\n" +
-                "\tINSERT INTO addresses (street_address, city, state, zipcode)\n" +
-                "\tVALUES ('?', '?', '?', '?')\n" +
-                "\tRETURNING address_id\n" +
-                ")\n" +
-                "INSERT INTO breweries (brewery_name, user_id, address_id, is_active)\n" +
-                "SELECT '?', '?', address_id, true\n" +
-                "FROM add_brewery";
-        jdbcTemplate.update(sql, newBrewery.getStreetAddress(), newBrewery.getCity(), newBrewery.getState(), newBrewery.getZipcode(), newBrewery.getBreweryName(), newBrewery.getUserId());
+    public void addBrewery(NewBreweryDto newBreweryDto) {
+        String sqlAddresses = "INSERT INTO addresses (street_address, city, state, zipcode) VALUES (?, ?, ?, ?) RETURNING address_id";
+        int address = jdbcTemplate.queryForObject(sqlAddresses, int.class, newBreweryDto.getStreetAddress(), newBreweryDto.getCity(), newBreweryDto.getState(), newBreweryDto.getZipcode());
+        String sqlBrewery = "INSERT INTO breweries (brewery_name, user_id, address_id, is_active) VALUES (?, ?, ?, true)";
+        jdbcTemplate.update(sqlBrewery, newBreweryDto.getName(), newBreweryDto.getUserId(), address);
     }
 
 
@@ -69,6 +65,7 @@ public class JdbcBreweryDao implements BreweryDao {
         brewery.setPhoneNumber(results.getString("phone_number"));
         brewery.setBreweryHistory(results.getString("brewery_history"));
         brewery.setBreweryLogo(results.getString("brewery_logo"));
+        brewery.setBreweryImage(results.getString("brewery_image"));
         //brewery.setActive(results.getBoolean("is_active"));
 
         return brewery;
