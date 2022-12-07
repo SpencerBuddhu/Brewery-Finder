@@ -55,7 +55,7 @@ public class JdbcBreweryDao implements BreweryDao {
 
     @Override
     public void addBrewery(NewBreweryDto newBreweryDto) {
-        String sqlAddresses = "INSERT INTO addresses (street_address, city, state, zipcode) VALUES (?, ?, ?, ?) RETURNING address_id";
+        String sqlAddresses = "INSERT INTO addresses (street_address, city, state, zipcode) VALUES (?, ?, ?, ?) RETURNING address_id;";
         int addressId = jdbcTemplate.queryForObject(sqlAddresses, int.class, newBreweryDto.getStreetAddress(), newBreweryDto.getCity(), newBreweryDto.getState(), newBreweryDto.getZipcode());
         String sqlBrewery = "INSERT INTO breweries (brewery_name, user_id, address_id, is_active) VALUES (?, ?, ?, true)";
         jdbcTemplate.update(sqlBrewery, newBreweryDto.getName(), newBreweryDto.getUserId(), addressId);
