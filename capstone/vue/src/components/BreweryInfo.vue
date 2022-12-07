@@ -17,7 +17,7 @@ export default {
     props: ['brewery'],
     computed: {
         address() {
-            return `${this.brewery.streetAddress}, ${this.brewery.city}, ${this.brewery.state} ${this.brewery.zipcode}`;
+            return `${this.brewery.address.streetAddress}, ${this.brewery.address.city}, ${this.brewery.address.state} ${this.brewery.address.zipcode}`;
         }
     }
 }

@@ -43,12 +43,15 @@ public class JdbcBreweryDao implements BreweryDao {
     @Override
     public Brewery getBreweryById(int breweryId) {
         Brewery brewery = null;
-        String sql = "SELECT brewery_id, brewery_name, user_id, website_url, email_address, address_id, phone_number, brewery_history, brewery_logo, brewery_image \n" +
-                "FROM breweries \n" +
-                "WHERE is_active = true AND brewery_id = ?";
+        String sql = "SELECT * FROM breweries WHERE brewery_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
         if (results.next()) {
             brewery = mapRowToBrewery(results);
+
+            int addressId = results.getInt("address_id");
+            brewery.setAddress(getBreweryAddress(addressId));
+
+            brewery.setHours(getBreweryHours(breweryId));
         }
         return brewery;
     }
@@ -97,7 +100,7 @@ public class JdbcBreweryDao implements BreweryDao {
         brewery.setBreweryHistory(results.getString("brewery_history"));
         brewery.setBreweryLogo(results.getString("brewery_logo"));
         brewery.setBreweryImage(results.getString("brewery_image"));
-        //brewery.setActive(results.getBoolean("is_active"));
+        brewery.setActive(results.getBoolean("is_active"));
 
         return brewery;
     }
