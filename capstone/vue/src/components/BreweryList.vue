@@ -3,7 +3,7 @@
     <div v-for="brewery in this.$store.state.breweries" v-bind:key="brewery.breweryId">
       <img v-bind:src="brewery.breweryLogo" v-bind:alt="brewery.breweryName">
       <p><router-link v-bind:to="{ name: 'brewery', params: {id: brewery.breweryId}}">{{brewery.breweryName}}</router-link></p>
-      <p>{{brewery.city}}, {{brewery.state}}</p>
+      <p>{{brewery.address.city}}, {{brewery.address.state}}</p>
     </div>
   </div>
 </template>
