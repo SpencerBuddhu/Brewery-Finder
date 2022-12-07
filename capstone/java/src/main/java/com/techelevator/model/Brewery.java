@@ -11,13 +11,14 @@ public class Brewery {
     private String phoneNumber;
     private String breweryHistory;
     private String breweryLogo;
+    private String breweryImage;
     private Boolean isActive;
     private String streetAddress;
     private String city;
     private String state;
     private int zipcode;
 
-    public Brewery(int breweryId, String breweryName, int userId, String websiteUrl, String emailAddress, int addressId, String phoneNumber, String breweryHistory, String breweryLogo, Boolean isActive, String streetAddress, String city, String state, int zipcode) {
+    public Brewery(int breweryId, String breweryName, int userId, String websiteUrl, String emailAddress, int addressId, String phoneNumber, String breweryHistory, String breweryLogo, String breweryImage, Boolean isActive, String streetAddress, String city, String state, int zipcode) {
         this.breweryId = breweryId;
         this.breweryName = breweryName;
         this.userId = userId;
@@ -27,6 +28,7 @@ public class Brewery {
         this.phoneNumber = phoneNumber;
         this.breweryHistory = breweryHistory;
         this.breweryLogo = breweryLogo;
+        this.breweryImage = breweryImage;
         this.isActive = isActive;
         this.streetAddress = streetAddress;
         this.city = city;
@@ -147,5 +149,13 @@ public class Brewery {
 
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
+    }
+
+    public String getBreweryImage() {
+        return breweryImage;
+    }
+
+    public void setBreweryImage(String breweryImage) {
+        this.breweryImage = breweryImage;
     }
 }

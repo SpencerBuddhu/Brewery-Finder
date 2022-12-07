@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.BreweryDao;
+import com.techelevator.dao.UserDao;
 import com.techelevator.model.Brewery;
 import com.techelevator.model.NewBreweryDto;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +12,11 @@ import java.util.List;
 @CrossOrigin
 public class BreweryController {
     private BreweryDao breweryDao;
+    private UserDao userDao;
 
-    public BreweryController(BreweryDao breweryDao) {
+    public BreweryController(BreweryDao breweryDao, UserDao userDao) {
         this.breweryDao = breweryDao;
+        this.userDao = userDao;
     }
 
     @RequestMapping(path = "/breweries", method = RequestMethod.GET)
@@ -30,6 +33,7 @@ public class BreweryController {
     @RequestMapping(path = "/breweries", method = RequestMethod.POST)
     public void addBrewery(@RequestBody NewBreweryDto newBreweryDto) {
         breweryDao.addBrewery(newBreweryDto);
+        userDao.upgradeUser(newBreweryDto);
     }
 
 }

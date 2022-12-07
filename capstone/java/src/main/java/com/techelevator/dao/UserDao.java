@@ -1,10 +1,13 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.NewBreweryDto;
 import com.techelevator.model.User;
 
 import java.util.List;
 
 public interface UserDao {
+
+    void upgradeUser(NewBreweryDto newBreweryDto);
 
     List<User> findAll();
 
