@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import userService from '../services/UserService';
 import breweryService from '../services/BreweryService';
 
 export default {
@@ -52,6 +53,14 @@ export default {
     }
   },
   methods: {
+    getUsers() {
+      userService.list()
+      .then(response => {
+        if (response.status === 200) {
+          this.$store.commit('SET_USERS', response.data);
+        }
+      })
+    },
     addBrewery() {
       breweryService.create(this.brewery)
       .then(response => {
@@ -82,6 +91,9 @@ export default {
         zipcode: ''
       };
     }
+  },
+  created() {
+    this.getUsers();
   }
 
 }

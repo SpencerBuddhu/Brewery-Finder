@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2>Brewery List</h2>
     <brewery-list></brewery-list>
   </div>
 </template>

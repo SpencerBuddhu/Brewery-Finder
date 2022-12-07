@@ -1,8 +1,8 @@
 <template>
   <div>
     <div v-for="brewery in this.$store.state.breweries" v-bind:key="brewery.id">
-      <img v-bind:src="brewery.logo" v-bind:alt="brewery.name">
-      <p>{{brewery.name}} {{brewery.city}}, {{brewery.state}}</p>
+      <img v-bind:src="brewery.breweryLogo" v-bind:alt="brewery.breweryName">
+      <p>{{brewery.breweryName}} {{brewery.city}}, {{brewery.state}}</p>
     </div>
   </div>
 </template>
@@ -15,7 +15,13 @@ export default {
     getBreweries() {
       breweryService.list()
       .then(response => {
-        this.$store.commit('SET_BREWERIES', response.data);
+        if (response.status === 200) {
+          //console.log(response.status);
+          this.$store.commit('SET_BREWERIES', response.data);
+        } else {
+          console.log(response.status)
+        }
+        
       });
     }
   },
