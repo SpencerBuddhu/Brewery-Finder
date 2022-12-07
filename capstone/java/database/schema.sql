@@ -24,13 +24,13 @@ CREATE TABLE breweries (
     brewery_id serial,
     brewery_name varchar(100) NOT NULL,
     user_id int NOT NULL,
-    website_url varchar(100),
+    website_url varchar(300),
     email_address varchar(100),
     address_id int NOT NULL,
     phone_number varchar(10),
     brewery_history text,
-    brewery_logo varchar(100),
-	brewery_image varchar(100),
+    brewery_logo varchar(300),
+	brewery_image varchar(300),
     is_active boolean NOT NULL,
 
     constraint pk_breweries PRIMARY KEY (brewery_id),
@@ -41,8 +41,8 @@ CREATE TABLE breweries (
 CREATE TABLE beers (
     beer_id serial,
     beer_name varchar(100) NOT NULL,
-    beer_description varchar(100) NOT NULL,
-    image varchar(100) NOT NULL,
+    beer_description varchar(400) NOT NULL,
+    image varchar(300) NOT NULL,
     abv numeric(2,1) NOT NULL,
     beer_type varchar(50) NOT NULL,
     is_active boolean NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE reviews (
     review_id serial,
     review_text text NOT NULL,
     user_id int NOT NULL,
-    image varchar(100),
+    image varchar(300),
 
     constraint pk_reviews PRIMARY KEY (review_id),
     constraint fk_reviews FOREIGN KEY (user_id) references users (user_id)
