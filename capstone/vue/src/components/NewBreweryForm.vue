@@ -71,9 +71,9 @@ export default {
         }
       })
       .catch(error => {
-        this.addError = true;
+        this.addBreweryError = true;
         if (error.response) {
-          this.errorMessage = `${error.response.status}: ${error.response.statusText}`
+          this.errorMessage = `${error.response.status}: ${error.response.data.error}, ${error.response.data.message}`;
         } else if (error.request) {
           this.errorMessage = 'Error submitting form. Server could not be reached.';
         } else {
