@@ -30,6 +30,7 @@ CREATE TABLE breweries (
     phone_number varchar(10),
     brewery_history text,
     brewery_logo varchar(100),
+	brewery_image varchar(100),
     is_active boolean NOT NULL,
 
     constraint pk_breweries PRIMARY KEY (brewery_id),

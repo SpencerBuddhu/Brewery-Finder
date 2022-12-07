@@ -69,7 +69,7 @@ public class JdbcBreweryDao implements BreweryDao {
         brewery.setPhoneNumber(results.getString("phone_number"));
         brewery.setBreweryHistory(results.getString("brewery_history"));
         brewery.setBreweryLogo(results.getString("brewery_logo"));
-        brewery.setActive(results.getBoolean("is_active"));
+        //brewery.setActive(results.getBoolean("is_active"));
 
         return brewery;
     }

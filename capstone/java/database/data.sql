@@ -11,4 +11,5 @@ INSERT INTO users (username,password_hash,role) VALUES ('isaac', '$2a$10$ql9/Rl0
 INSERT INTO users (username,password_hash,role) VALUES ('justin', '$2a$10$0RYBCU2qis96/DdJJQyU8ek4T65tdJcxMVSphDdWQ3.U2ljK3LWTG', 'ROLE_BEERLOVER');
 INSERT INTO users (username,password_hash,role) VALUES ('ken', '$2a$10$mRSrMCD1786MKP.pOVdJouemKy.xOBgYRFEGqC8jdfIO77M6JJQku', 'ROLE_BEERLOVER');
 
+
 COMMIT TRANSACTION;
