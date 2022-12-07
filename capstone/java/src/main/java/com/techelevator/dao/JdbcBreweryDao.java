@@ -46,12 +46,15 @@ public class JdbcBreweryDao implements BreweryDao {
 
     @Override
     public void addBrewery(Brewery newBrewery) {
-        String sql = "INSERT INTO breweries (brewery_id, brewery_name, user_id, website_url, email_address, address_id, phone_number, brewery_history, brewery_logo, is_active) \n" +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, newBrewery.getBreweryId(), newBrewery.getBreweryName(), newBrewery.getUserId(),
-                newBrewery.getWebsiteUrl(), newBrewery.getEmailAddress(), newBrewery.getAddressId(),
-                newBrewery.getPhoneNumber(), newBrewery.getBreweryHistory(), newBrewery.getBreweryLogo(),
-                newBrewery.getActive());
+        String sql = "WITH add_brewery AS (\n" +
+                "\tINSERT INTO addresses (street_address, city, state, zipcode)\n" +
+                "\tVALUES ('?', '?', '?', '?')\n" +
+                "\tRETURNING address_id\n" +
+                ")\n" +
+                "INSERT INTO breweries (brewery_name, user_id, address_id, is_active)\n" +
+                "SELECT '?', '?', address_id, true\n" +
+                "FROM add_brewery";
+        jdbcTemplate.update(sql, newBrewery.getStreetAddress(), newBrewery.getCity(), newBrewery.getState(), newBrewery.getZipcode(), newBrewery.getBreweryName(), newBrewery.getUserId());
     }
 
 
