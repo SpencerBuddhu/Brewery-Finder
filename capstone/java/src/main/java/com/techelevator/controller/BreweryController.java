@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.BreweryDao;
 import com.techelevator.model.Brewery;
+import com.techelevator.model.NewBreweryDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,8 +28,8 @@ public class BreweryController {
     }
 
     @RequestMapping(path = "/breweries", method = RequestMethod.POST)
-    public void addBrewery(@RequestBody Brewery newBrewery) {
-        breweryDao.addBrewery(newBrewery);
+    public void addBrewery(@RequestBody NewBreweryDto newBreweryDto) {
+        breweryDao.addBrewery(newBreweryDto);
     }
 
 }

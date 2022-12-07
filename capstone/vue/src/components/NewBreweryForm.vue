@@ -71,6 +71,7 @@ export default {
         }
       })
       .catch(error => {
+        this.addError = true;
         if (error.response) {
           this.errorMessage = `${error.response.status}: ${error.response.statusText}`
         } else if (error.request) {
@@ -78,7 +79,6 @@ export default {
         } else {
           this.errorMessage = 'Error submitting form. Request could not be created.';
         }
-        this.addError = true;
       });
     },
     resetBrewery() {
