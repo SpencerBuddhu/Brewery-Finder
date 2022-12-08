@@ -23,6 +23,8 @@ export default new Vuex.Store({
     breweries: [],
     beerLovers: [],
     beers: [],
+    currentBrewery: {},
+    currentBeer: {},
     breweryId: 1,
     brewerBrewery: {},
     brewerBeers: {}
@@ -47,7 +49,9 @@ export default new Vuex.Store({
       state.beers = [];
       // state.breweryId = 0;
       state.brewerBrewery = {},
-      state.brewerBeers = []
+      state.brewerBeers = [],
+      state.currentBrewery = {},
+      state.currentBeer = {},
       axios.defaults.headers.common = {};
     },
     SET_BREWERIES(state, data) {
@@ -67,6 +71,12 @@ export default new Vuex.Store({
     },
     SET_BREWER_BEERS(state, data) {
       state.brewerBeers = data;
+    },
+    SET_CURRENT_BREWERY(state, data) {
+      state.currentBrewery = data;
+    },
+    SET_CURRENT_BEER(state, data) {
+      state.currentBeer = data;
     }
   }
 })

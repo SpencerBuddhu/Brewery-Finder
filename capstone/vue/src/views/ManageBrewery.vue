@@ -52,7 +52,7 @@ export default {
             errorMessage = 'Error submitting form. Request could not be created.';
           }
           console.log(errorMessage);
-        })
+        });
     }
   },
   created() {
