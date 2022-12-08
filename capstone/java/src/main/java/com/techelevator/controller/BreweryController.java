@@ -36,6 +36,12 @@ public class BreweryController {
         userDao.upgradeUser(newBreweryDto);
     }
 
+    //TODO Change this so it only returns int breweryId and not an entire brewery and put in UserController
+    @RequestMapping(path = "/brewery/{userId}", method = RequestMethod.GET)
+    public Brewery getBreweryByUserId (@PathVariable int userId) {
+        return breweryDao.findBreweryByUserId(userId);
+    }
+
 }
 
 

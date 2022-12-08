@@ -40,6 +40,21 @@ public class JdbcBreweryDao implements BreweryDao {
         return breweries;
     }
 
+    //TODO Change so it only returns int breweryId and not an entire brewery and put in JdbcUserDao
+    @Override
+    public Brewery findBreweryByUserId(int userId) {
+        Brewery brewery = new Brewery();
+        String sql = "SELECT * \n" +
+                "FROM breweries\n" +
+                "JOIN users ON breweries.user_id = users.user_id\n" +
+                "WHERE users.user_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        if (results.next()) {
+            brewery = mapRowToBrewery(results);
+        }
+        return brewery;
+    }
+
     @Override
     public Brewery getBreweryById(int breweryId) {
         Brewery brewery = null;
