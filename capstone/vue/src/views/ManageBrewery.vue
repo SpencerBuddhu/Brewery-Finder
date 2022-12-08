@@ -3,7 +3,7 @@
     <navigation></navigation>
     <h1>Manage Brewery</h1>
     <h2>{{ brewerBrewery.breweryName }}</h2>
-    <update-brewery-form></update-brewery-form>
+    <update-brewery-form v-bind:brewery="brewerBrewery"></update-brewery-form>
     <update-brewery-address></update-brewery-address>
     <update-brewery-hours></update-brewery-hours>
   </div>
