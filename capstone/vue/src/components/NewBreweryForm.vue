@@ -64,7 +64,7 @@ export default {
     addBrewery() {
       breweryService.create(this.brewery)
       .then(response => {
-        if (response.status === 201) {
+        if (response.status === 200) {
           this.addBreweryError = false;
           this.resetBrewery();
           this.$router.push({ name: 'breweries' });
