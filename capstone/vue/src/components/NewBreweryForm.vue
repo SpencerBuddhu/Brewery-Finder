@@ -57,7 +57,7 @@ export default {
       userService.list()
       .then(response => {
         if (response.status === 200) {
-          this.$store.commit('SET_USERS', response.data);
+          this.$store.commit('SET_BEER_LOVERS', response.data);
         }
       })
     },
