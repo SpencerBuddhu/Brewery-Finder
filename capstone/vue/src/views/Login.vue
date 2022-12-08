@@ -1,39 +1,48 @@
 <template>
-  <div id="login" class="text-center">
-    <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        v-if="invalidCredentials"
-      >Invalid username and password!</div>
-      <div
-        class="alert alert-success"
-        role="alert"
-        v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <label for="password" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
-    </form>
+  <div class="container">
+    <div class="cta">
+      <div class="main-card">
+        <h1>Brewery Finder</h1>
+        <p>Join our community of beer lovers. Find breweries and view their fine selection of beers. Leave a rating or review of a beer and follow your favorite brewery to stay up-to-date.</p>
+      </div>
+    </div>
+    <div id="login" class="text-center">
+      <form class="form-signin" @submit.prevent="login">
+        <h2 class="welcome">Welcome!</h2>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          v-if="invalidCredentials"
+        >Invalid username and password!</div>
+        <div
+          class="alert alert-success"
+          role="alert"
+          v-if="this.$route.query.registration"
+        >Thank you for registering, please sign in.</div>
+        <!-- <label for="username" class="sr-only">Username</label> -->
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          placeholder="Username"
+          v-model="user.username"
+          required
+          autofocus
+        />
+        <!-- <label for="password" class="sr-only">Password</label> -->
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          placeholder="Password"
+          v-model="user.password"
+          required
+        />
+        
+        <button type="submit">Sign in</button>
+        <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -74,3 +83,70 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  padding: 96px 160px;
+  background-color: hsl(13, 100%, 72%);
+}
+.cta {
+  font-family: Ubuntu, sans-serif;
+  /* text-align: center; */
+  color: hsl(0, 0%, 100%);
+  padding: 96px;
+}
+.main-card {
+  padding: 64px;
+  background-color: hsl(207, 13%, 34%);
+  /* border: 2px solid black; */
+  border-radius: 16px;
+}
+.main-card > h1 {
+  font-size: 64px;
+  margin-bottom: 32px;
+}
+.form-signin {
+  display: flex;
+  width: 500px;
+  height: 400px;
+  flex-direction: column;
+  align-items: center;
+  background-color: hsl(0, 0%, 100%);
+  font-family: Ubuntu, sans-serif;
+  text-align: center;
+  border-radius: 16px;
+}
+.form-signin > h2 {
+  font-size: 32px;
+  color: hsl(208, 49%, 24%);
+  margin: 32px 0;
+}
+.form-signin > button {
+  width: 175px;
+  height: 50px;
+  color: hsl(0, 0%, 100%);
+  border-radius: 8px;
+  border: none;
+  background-color: hsl(207, 13%, 34%);
+  font-size: 16px;
+  margin: 16px 0;
+}
+.form-signin > button:hover {
+  background-color: hsl(237, 17%, 21%);
+  font-weight: bold;
+  cursor: pointer;
+}
+.form-control {
+  width: 350px;
+  height: 50px;
+  font-size: 16px;
+  border: 1px solid hsl(208, 49%, 24%);
+  border-radius: 8px;
+  margin: 16px 0;
+  padding-left: 16px;
+}
+</style>
