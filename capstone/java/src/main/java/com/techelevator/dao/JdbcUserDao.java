@@ -60,6 +60,14 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
+    public int findBreweryIdByUserId(int userId) {
+        int breweryId;
+        breweryId = jdbcTemplate.queryForObject("SELECT brewery_id FROM breweries JOIN users on breweries.user_id = users.user_id WHERE users.user_id = ?", int.class, userId);
+        return breweryId;
+    }
+
+
+    @Override
 	public User getUserById(int userId) {
 		String sql = "SELECT * FROM users WHERE user_id = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);

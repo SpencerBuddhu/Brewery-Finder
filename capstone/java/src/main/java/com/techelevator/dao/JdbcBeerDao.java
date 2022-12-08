@@ -43,6 +43,8 @@ public class JdbcBeerDao implements BeerDao {
         return beer;
     }
 
+
+    //TODO test and make sure add beer is working correctly
     @Override
     public void addBeer(Beer beer, int breweryId) {
         String sqlBeer = "INSERT INTO beers (beer_name, beer_description, image, abv, beer_type, is_active)\n" +
