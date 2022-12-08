@@ -22,13 +22,13 @@ public class BeerController {
         return beerDao.listBeers(breweryId);
     }
 
-    @RequestMapping(path = "/beer/{breweryId}/{beerId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/beers/{breweryId}/{beerId}", method = RequestMethod.GET)
     public Beer getBeerByBreweryId (@PathVariable int breweryId, @PathVariable int beerId) {
         return beerDao.getBeer(breweryId, beerId);
     }
 
     //TODO test to make sure this works
-    @RequestMapping(path = "/beer/{breweryId}", method = RequestMethod.POST)
+    @RequestMapping(path = "/beers/{breweryId}", method = RequestMethod.POST)
     public void addBeer(@RequestBody Beer beer, @PathVariable int breweryId) {
         beerDao.addBeer(beer, breweryId);
     }

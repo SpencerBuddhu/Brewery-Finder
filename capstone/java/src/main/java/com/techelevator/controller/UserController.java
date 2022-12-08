@@ -23,7 +23,7 @@ public class UserController {
         return userDao.findAllBeerLovers();
     }
 
-    @RequestMapping(path = "/breweryId/{userId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/users/{userId}", method = RequestMethod.GET)
     public int findBreweryIdByUserId(@PathVariable int userId) {
         return userDao.findBreweryIdByUserId(userId);
     }
