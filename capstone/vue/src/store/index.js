@@ -21,7 +21,9 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     breweries: [],
-    users: []
+    users: [],
+    beers: [],
+    breweryId: 0
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -38,6 +40,10 @@ export default new Vuex.Store({
       localStorage.removeItem('user');
       state.token = '';
       state.user = {};
+      state.breweries = [];
+      state.users = [];
+      state.beers = [];
+      state.breweryId = 0;
       axios.defaults.headers.common = {};
     },
     SET_BREWERIES(state, data) {
@@ -45,6 +51,12 @@ export default new Vuex.Store({
     },
     SET_USERS(state, data) {
       state.users = data;
+    },
+    SET_BEERS(state, data) {
+      state.beers = data;
+    },
+    SET_BREWERYID(state, data) {
+      state.breweryId = data;
     }
   }
 })
