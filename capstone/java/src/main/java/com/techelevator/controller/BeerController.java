@@ -27,5 +27,10 @@ public class BeerController {
         return beerDao.getBeer(breweryId, beerId);
     }
 
+    //TODO test to make sure this works
+    @RequestMapping(path = "/beer/{breweryId}", method = RequestMethod.POST)
+    public void addBeer(@RequestBody Beer beer, @PathVariable int breweryId) {
+        beerDao.addBeer(beer, breweryId);
+    }
 
 }
