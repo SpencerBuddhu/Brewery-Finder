@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.techelevator.model.Brewery;
 import com.techelevator.model.NewBreweryDto;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -42,6 +43,7 @@ public class JdbcUserDao implements UserDao {
         String sql = "UPDATE users SET role = 'ROLE_BREWER' WHERE user_id = ?";
         jdbcTemplate.update(sql, newBreweryDto.getUserId());
     }
+
 
     @Override
     public List<User> findAllBeerLovers() {
