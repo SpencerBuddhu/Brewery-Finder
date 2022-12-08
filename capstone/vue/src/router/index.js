@@ -8,6 +8,10 @@ import store from '../store/index'
 import Breweries from '../views/Breweries.vue'
 import Brewery from '../views/Brewery.vue'
 import NewBrewery from '../views/NewBrewery.vue'
+import ManageBrewery from '../views/ManageBrewery.vue'
+import ManageBeers from '../views/ManageBeers.vue'
+import NewBeer from '../views/NewBeer.vue'
+import BeerDetail from '../views/BeerDetail.vue'
 
 Vue.use(Router)
 
@@ -76,6 +80,38 @@ const router = new Router({
       path: "/addBrewery",
       name: "addBrewery",
       component: NewBrewery,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/manageBrewery",
+      name: "manageBrewery",
+      component: ManageBrewery,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/manageBeers",
+      name: "manageBeers",
+      component: ManageBeers,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/addBeer",
+      name: "addBeer",
+      component: NewBeer,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/beers/:id",
+      name: "beers",
+      component: BeerDetail,
       meta: {
         requiresAuth: true
       }
