@@ -6,8 +6,8 @@ export default {
     return axios.get('/users');
   },
 
-  getBrewerBreweryId() {
-    return axios.get('/users/breweryId');
+  getBrewerBreweryId(userId) {
+    return axios.get(`/users/${userId}`);
   }
 
 }

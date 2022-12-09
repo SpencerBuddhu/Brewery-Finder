@@ -7,7 +7,7 @@ export default {
   },
 
   get(breweryId, beerId) {
-    return axios.get(`/beer/${breweryId}/${beerId}`);
+    return axios.get(`/beers/${breweryId}/${beerId}`);
   },
 
   create(breweryId, beer) {
