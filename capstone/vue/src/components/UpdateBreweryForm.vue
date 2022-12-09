@@ -1,5 +1,5 @@
 <template>
-  <form v-on:submit.prevent>
+  <form v-on:submit.prevent="updateBrewery">
     <div>
       <label for="name">Brewery Name</label>
       <input type="text" v-model="breweryName" />
@@ -54,6 +54,8 @@
       <input type="time" v-model="hour.closingHour">
     </div>
     <button>Update Brewery Info</button>
+    <p v-show="updateSuccess">{{ successMessage}}</p>
+    <p v-show="updateFailure">{{ errorMessage }}</p>
   </form>
 </template>
 
@@ -64,6 +66,7 @@ export default {
   name: 'update-brewery-form',
   data() {
     return {
+      breweryId: 0,
       breweryName: '',
       websiteUrl: '',
       emailAddress: '',
@@ -72,11 +75,16 @@ export default {
       breweryImage: '',
       breweryHistory: '',
       active: false,
+      addressId: 0,
       streetAddress: '',
       city: '',
       state: '',
       zipcode: '',
       hours: [],
+      updateSuccess: false,
+      updateFailure: false,
+      errorMessage: '',
+      successMessage: 'Update successful!'
     }
   },
   methods: {
@@ -93,6 +101,7 @@ export default {
           this.breweryImage = response.data.breweryImage;
           this.breweryHistory = response.data.breweryHistory;
           this.active = response.data.active;
+          this.addressId = response.data.address.addressId;
           this.streetAddress = response.data.address.streetAddress;
           this.city = response.data.address.city;
           this.state = response.data.address.state;
@@ -113,6 +122,43 @@ export default {
           }
           console.log(errorMessage);
         });
+    },
+    updateBrewery() {
+      const brewery = {
+        breweryId: this.$store.state.breweryId,
+        breweryName: this.breweryName,
+        userId: this.$store.state.user.id,
+        websiteUrl: this.websiteUrl,
+        emailAddress: this.emailAddress,
+        address: {
+          addressId: this.addressId,
+          streetAddress: this.streetAddress,
+          city: this.city,
+          state: this.state,
+          zipcode: this.zipcode
+        },
+        hours: this.hours,
+        phoneNumber: this.phoneNumber,
+        breweryHistory: this.breweryHistory,
+        breweryLogo: this.breweryLogo,
+        breweryImage: this.breweryImage,
+        active: this.active
+      };
+      breweryService.update(brewery.breweryId, brewery)
+      .then(response => {
+        if (response.status === 200) {
+          this.updateSuccess = true;
+        }
+      })
+      .catch(error => {
+        if (error.response) {
+          this.errorMessage = `${error.response.status}: ${error.response.data.error}, ${error.response.data.message}`;
+        } else if (error.request) {
+          this.errorMessage = 'Error submitting form. Server could not be reached.';
+        } else {
+          this.errorMessage = 'Error submitting form. Request could not be created.';
+        }
+      });
     }
   },
   created() {
