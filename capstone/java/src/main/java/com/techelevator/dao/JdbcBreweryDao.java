@@ -134,8 +134,16 @@ public class JdbcBreweryDao implements BreweryDao {
         Hours hours = new Hours();
         hours.setHoursId(rowSet.getInt("hours_id"));
         hours.setDay(getDayOfWeek(rowSet.getInt("day_id")));
-        hours.setOpeningHour(LocalTime.parse(rowSet.getString("opening_hour")));
-        hours.setClosingHour(LocalTime.parse(rowSet.getString("closing_hour")));
+        if (rowSet.getString("opening_hour") != null) {
+            hours.setOpeningHour(LocalTime.parse(rowSet.getString("opening_hour")));
+        } else {
+            hours.setOpeningHour(LocalTime.MIDNIGHT);
+        }
+        if (rowSet.getString("closing_hour") != null) {
+            hours.setClosingHour(LocalTime.parse(rowSet.getString("closing_hour")));
+        } else {
+            hours.setClosingHour(LocalTime.MIDNIGHT);
+        }
         return hours;
     }
 
