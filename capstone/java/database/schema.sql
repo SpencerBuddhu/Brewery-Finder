@@ -72,8 +72,8 @@ CREATE TABLE ratings (
 CREATE TABLE hours (
     hours_id serial,
     day_id int NOT NULL,
-    opening_hour timestamp NOT NULL,
-    closing_hour timestamp NOT NULL,
+    opening_hour time,
+    closing_hour time,
 
     constraint pk_hours PRIMARY KEY (hours_id)
 );
