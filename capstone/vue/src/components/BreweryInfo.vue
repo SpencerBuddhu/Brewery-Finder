@@ -7,11 +7,6 @@
     <p>{{ phoneNumber }}</p>
     <p>{{ emailAddress }}</p>
     <p>{{ websiteUrl }}</p>
-    <!-- <div v-for="hour in hours" v-bind:key="hour.hoursId">
-      <label>{{ hour.day }}</label>
-      <input type="time" v-model="hour.openingHour">
-      <input type="time" v-model="hour.closingHour">
-    </div> -->
     <table>
       <thead>
         <tr>
