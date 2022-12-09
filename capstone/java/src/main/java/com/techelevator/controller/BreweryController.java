@@ -21,12 +21,12 @@ public class BreweryController {
 
     @RequestMapping(path = "/breweries", method = RequestMethod.GET)
     public List<Brewery> findBreweries() {
-        List <Brewery> breweries = breweryDao.listBreweries();
+        List<Brewery> breweries = breweryDao.listBreweries();
         return breweries;
-        }
+    }
 
     @RequestMapping(path = "/breweries/{breweryId}", method = RequestMethod.GET)
-    public Brewery getBreweryById (@PathVariable int breweryId) {
+    public Brewery getBreweryById(@PathVariable int breweryId) {
         return breweryDao.getBreweryById(breweryId);
     }
 
@@ -34,12 +34,6 @@ public class BreweryController {
     public void addBrewery(@RequestBody NewBreweryDto newBreweryDto) {
         breweryDao.addBrewery(newBreweryDto);
         userDao.upgradeUser(newBreweryDto);
-    }
-
-    //TODO Change this so it only returns int breweryId and not an entire brewery and put in UserController
-    @RequestMapping(path = "/brewery/{userId}", method = RequestMethod.GET)
-    public Brewery getBreweryByUserId (@PathVariable int userId) {
-        return breweryDao.findBreweryByUserId(userId);
     }
 
 }
