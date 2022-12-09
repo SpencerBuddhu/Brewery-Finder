@@ -14,5 +14,7 @@ public interface BeerDao {
 
     void deleteBeer(int beerId);
 
+    public List<Beer> listActiveBeers(int breweryId);
 
+    public void activateBeer(int beerId);
 }
