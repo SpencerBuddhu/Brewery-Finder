@@ -1,24 +1,26 @@
 <template>
   <div class="home">
     <navigation></navigation>
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
-    <div>
-      <router-link v-bind:to="{ name: 'breweries' }">View all Breweries</router-link>
+    <div class="container">
+      <h1>Cheers!</h1>
+      <div class="card-list">
+        <div>
+          <router-link v-bind:to="{ name: 'breweries' }">View all Breweries</router-link>
+        </div>
+        <div v-if="isBrewer">
+          <router-link v-bind:to="{ name: 'brewery', params: { id: breweryId } }">My Brewery</router-link>
+        </div>
+        <div v-if="isBrewer">
+          <router-link v-bind:to="{ name: 'manageBrewery' }">Manage Brewery</router-link>
+        </div>
+        <div v-if="isBrewer">
+          <router-link v-bind:to="{ name: 'manageBeers' }">Manage Beers</router-link>
+        </div>
+        <div v-if="isAdmin">
+          <router-link v-bind:to="{ name: 'addBrewery' }"> Add Brewery</router-link>
+        </div>
+      </div>
     </div>
-    <div v-if="isBrewer">
-      <router-link v-bind:to="{ name: 'brewery', params: { id: breweryId } }">My Brewery</router-link>
-    </div>
-    <div v-if="isBrewer">
-      <router-link v-bind:to="{ name: 'manageBrewery' }">Manage Brewery</router-link>
-    </div>
-    <div v-if="isBrewer">
-      <router-link v-bind:to="{ name: 'manageBeers' }">Manage Beers</router-link>
-    </div>
-    <div v-if="isAdmin">
-      <router-link v-bind:to="{ name: 'addBrewery' }"> Add Brewery</router-link>
-    </div>
-
   </div>
 </template>
 
@@ -72,3 +74,23 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.home {
+  height: 100vh;
+  background-color: hsl(13, 100%, 72%);
+  font-family: Ubuntu, sans-serif;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  font-size: 80px;
+  background-color: hsl(207, 13%, 34%);
+  color: hsl(0, 0%, 100%);
+  padding: 0 256px;
+}
+</style>
