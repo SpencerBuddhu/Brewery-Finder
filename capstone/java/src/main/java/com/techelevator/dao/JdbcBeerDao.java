@@ -23,6 +23,7 @@ public class JdbcBeerDao implements BeerDao {
         String sql = "SELECT * FROM beers  \n" +
                 "JOIN breweries_beers ON breweries_beers.beer_id = beers.beer_id\n" +
                 "WHERE breweries_beers.brewery_id = ?";
+
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
         while (results.next()) {
             Beer beer = mapRowToBeer(results);
@@ -47,12 +48,12 @@ public class JdbcBeerDao implements BeerDao {
 
 
     @Override
-    public Beer getBeer(int breweryId, int beerId) {
+    public Beer getBeer(int beerId) {
         Beer beer = new Beer();
         String sql = "SELECT * FROM beers  \n" +
                 "JOIN breweries_beers ON breweries_beers.beer_id = beers.beer_id\n" +
-                "WHERE breweries_beers.brewery_id = ? AND breweries_beers.beer_id = ?";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId, beerId);
+                "WHERE breweries_beers.beer_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, beerId);
         if (results.next()) {
             beer = mapRowToBeer(results);
         }
@@ -60,11 +61,11 @@ public class JdbcBeerDao implements BeerDao {
     }
 
     @Override
-    public void addBeer(Beer beer, int breweryId) {
+    public void addBeer(Beer beer) {
         String sqlBeer = "INSERT INTO beers (beer_name, beer_description, image, abv, beer_type, is_active) VALUES (?, ?, ?, ?, ?, true) RETURNING beer_id;";
         int newBeerId = jdbcTemplate.queryForObject(sqlBeer, int.class, beer.getBeerName(), beer.getBeerDescription(), beer.getBeerImage(), beer.getBeerAbv(), beer.getBeerType());
         String sqlBeerBrewery = "INSERT INTO breweries_beers (brewery_id, beer_id) VALUES (?, ?)";
-        jdbcTemplate.update(sqlBeerBrewery, breweryId, newBeerId);
+        jdbcTemplate.update(sqlBeerBrewery, beer.getBreweryId(), newBeerId);
     }
 
     @Override
@@ -73,9 +74,10 @@ public class JdbcBeerDao implements BeerDao {
         jdbcTemplate.update(sql, beerId);
     }
 
-    public void activateBeer(int beerId) {
-        String sql = "UPDATE beers SET is_active = true WHERE beer_id = ?";
-        jdbcTemplate.update(sql, beerId);
+    @Override
+    public void updateBeer(Beer beer, int beerId) {
+        String sql = "UPDATE beers SET beer_name = ?, beer_description = ?, image = ?, abv = ?, beer_type = ?, is_active = ? WHERE beer_id = ?";
+        jdbcTemplate.update(sql, beer.getBeerName(), beer.getBeerDescription(), beer.getBeerImage(), beer.getBeerAbv(), beer.getBeerType(), beer.isActive(), beerId);
     }
 
     private Beer mapRowToBeer(SqlRowSet results) {
