@@ -15,11 +15,11 @@
 }
 a {
   text-decoration: none;
-  /* color: hsl(0, 0%, 100%); */
+  color: hsl(0, 0%, 100%);
   margin-right: 16px;
 }
 a:hover {
-  /* color: hsl(240, 2%, 79%); */
+  color: hsl(240, 2%, 79%);
 }
 .router-link-exact-active {
   font-weight: 500;

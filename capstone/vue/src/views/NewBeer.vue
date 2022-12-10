@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="new-beer-page">
     <navigation></navigation>
     <h1>Add a Beer</h1>
     <new-beer-form></new-beer-form>
@@ -20,5 +20,8 @@ export default {
 </script>
 
 <style>
-
+.new-beer-page {
+  height: 100vh;
+  background-color: hsl(13, 100%, 72%);
+}
 </style>

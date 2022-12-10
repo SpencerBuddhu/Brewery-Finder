@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="new-brewery">
     <navigation></navigation>
     <h2>Add a Brewery</h2>
     <new-brewery-form></new-brewery-form>
@@ -17,3 +17,9 @@ export default {
   }
 }
 </script>
+<style scoped>
+.new-brewery {
+  height: 100vh;
+  background-color: hsl(13, 100%, 72%);
+}
+</style>

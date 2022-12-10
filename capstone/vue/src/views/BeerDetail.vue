@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="beer-detail">
     <navigation></navigation>
     <beer-info></beer-info>
   </div>
@@ -18,6 +18,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.beer-detail {
+  height: 100vh;
+  background-color: hsl(13, 100%, 72%);
+}
 </style>

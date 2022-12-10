@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="breweries">
     <navigation></navigation>
     <h2>Brewery List</h2>
     <brewery-list></brewery-list>
@@ -18,3 +18,9 @@ export default {
   }
 }
 </script>
+<style scoped>
+.breweries {
+  height: 100vh;
+  background-color: hsl(13, 100%, 72%);
+}
+</style>
