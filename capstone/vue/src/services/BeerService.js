@@ -2,8 +2,12 @@ import axios from 'axios';
 
 export default {
 
-  list(breweryId) {
-    return axios.get(`/beers/${breweryId}`);
+  listAll(breweryId) {
+    return axios.get(`/beers/${breweryId}?filter=all`);
+  },
+
+  listActive(breweryId) {
+    return axios.get(`/beers/${breweryId}?filter=active`);
   },
 
   get(breweryId, beerId) {
