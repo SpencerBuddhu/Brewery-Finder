@@ -3,13 +3,13 @@ import axios from 'axios';
 export default {
 
   listAll(breweryId) {
-    return axios.get(`/beers/${breweryId}?filter=all`);
-    // return axios.get(`/beers?breweryId=${breweryId}&filter=all`);
+    //return axios.get(`/beers/${breweryId}?filter=all`);
+    return axios.get(`/beers?breweryId=${breweryId}&filter=all`);
   },
 
   listActive(breweryId) {
-    return axios.get(`/beers/${breweryId}?filter=active`);
-    // return axios.get(`/beers?breweryId=${breweryId}&filter=active`);
+    //return axios.get(`/beers/${breweryId}?filter=active`);
+    return axios.get(`/beers?breweryId=${breweryId}&filter=active`);
   },
 
   get(beerId) {
