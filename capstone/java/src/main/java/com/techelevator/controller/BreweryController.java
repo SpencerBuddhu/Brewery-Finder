@@ -19,23 +19,27 @@ public class BreweryController {
         this.userDao = userDao;
     }
 
+    // List Breweries
     @RequestMapping(path = "/breweries", method = RequestMethod.GET)
     public List<Brewery> findBreweries() {
         List<Brewery> breweries = breweryDao.listBreweries();
         return breweries;
     }
 
+    // Get Brewery
     @RequestMapping(path = "/breweries/{breweryId}", method = RequestMethod.GET)
     public Brewery getBreweryById(@PathVariable int breweryId) {
         return breweryDao.getBreweryById(breweryId);
     }
 
+    // Create Brewery
     @RequestMapping(path = "/breweries", method = RequestMethod.POST)
     public void addBrewery(@RequestBody NewBreweryDto newBreweryDto) {
         breweryDao.addBrewery(newBreweryDto);
         userDao.upgradeUser(newBreweryDto);
     }
 
+    // Update Brewery
     @RequestMapping(path = "/breweries/{breweryId}", method = RequestMethod.PUT)
     public void updateBrewery(@RequestBody Brewery breweryToUpdate, @PathVariable int breweryId) {
         breweryDao.updateBrewery(breweryToUpdate, breweryId);

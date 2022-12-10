@@ -48,11 +48,10 @@ public class BeerController {
         beerDao.updateBeer(beer, beerId);
     }
 
-    // Delete(Deactivate) Beer
+    // Deactivate/Activate Beer
     @RequestMapping(path = "/beers/{beerId}", method = RequestMethod.DELETE)
     public void deleteBeer(@PathVariable int beerId) {
         beerDao.deleteBeer(beerId);
     }
 
-    
 }

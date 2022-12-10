@@ -20,10 +20,9 @@ public class JdbcBeerDao implements BeerDao {
     @Override
     public List<Beer> listBeers(int breweryId) {
         List<Beer> beers = new ArrayList<>();
-        String sql = "SELECT * FROM beers  \n" +
+        String sql = "SELECT beers.beer_id, beer_name, beer_description, image, abv, beer_type, is_active, breweries_beers.brewery_id FROM beers  \n" +
                 "JOIN breweries_beers ON breweries_beers.beer_id = beers.beer_id\n" +
                 "WHERE breweries_beers.brewery_id = ?";
-
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
         while (results.next()) {
             Beer beer = mapRowToBeer(results);
@@ -35,7 +34,7 @@ public class JdbcBeerDao implements BeerDao {
     @Override
     public List<Beer> listActiveBeers(int breweryId) {
         List<Beer> beers = new ArrayList<>();
-        String sql = "SELECT * FROM beers  \n" +
+        String sql = "SELECT beers.beer_id, beer_name, beer_description, image, abv, beer_type, is_active, breweries_beers.brewery_id FROM beers  \n" +
                 "JOIN breweries_beers ON breweries_beers.beer_id = beers.beer_id\n" +
                 "WHERE breweries_beers.brewery_id = ? AND is_active = true";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
@@ -50,7 +49,7 @@ public class JdbcBeerDao implements BeerDao {
     @Override
     public Beer getBeer(int beerId) {
         Beer beer = new Beer();
-        String sql = "SELECT * FROM beers  \n" +
+        String sql = "SELECT beers.beer_id, beer_name, beer_description, image, abv, beer_type, is_active, breweries_beers.brewery_id FROM beers  \n" +
                 "JOIN breweries_beers ON breweries_beers.beer_id = beers.beer_id\n" +
                 "WHERE breweries_beers.beer_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, beerId);
@@ -70,7 +69,8 @@ public class JdbcBeerDao implements BeerDao {
 
     @Override
     public void deleteBeer(int beerId) {
-        String sql = "UPDATE beers SET is_active = false WHERE beer_id = ?";
+        String sql = "UPDATE beers SET is_active = NOT is_active\n" +
+                "WHERE beer_id = ?";
         jdbcTemplate.update(sql, beerId);
     }
 
@@ -83,6 +83,7 @@ public class JdbcBeerDao implements BeerDao {
     private Beer mapRowToBeer(SqlRowSet results) {
         Beer beer = new Beer();
         beer.setBeerId(results.getInt("beer_id"));
+        beer.setBreweryId(results.getInt("brewery_id"));
         beer.setBeerName(results.getString("beer_name"));
         beer.setBeerDescription(results.getString("beer_description"));
         beer.setBeerImage(results.getString("image"));
