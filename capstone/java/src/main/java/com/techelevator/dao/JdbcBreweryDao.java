@@ -70,6 +70,18 @@ public class JdbcBreweryDao implements BreweryDao {
         }
     }
 
+    @Override
+    public void updateBrewery(Brewery brewery, int breweryId) {
+        String sqlBrewery = "UPDATE breweries SET brewery_name = ?, website_url = ?, email_address = ?, phone_number = ?, brewery_history = ?, brewery_logo = ?, brewery_image = ?, is_active = ? WHERE brewery_id = ?;";
+        jdbcTemplate.update(sqlBrewery, brewery.getBreweryName(), brewery.getWebsiteUrl(), brewery.getEmailAddress(), brewery.getPhoneNumber(), brewery.getBreweryHistory(), brewery.getBreweryLogo(), brewery.getBreweryImage(), brewery.getActive(), breweryId);
+        String sqlAddress = "UPDATE addresses SET street_address = ?, city = ?, state = ?, zipcode = ? WHERE address_id = ?;";
+        jdbcTemplate.update(sqlAddress, brewery.getAddress().getStreetAddress(), brewery.getAddress().getCity(), brewery.getAddress().getState(), brewery.getAddress().getZipcode(), brewery.getAddress().getAddressId());
+        for (Hours hour : brewery.getHours()) {
+            String sqlHours = "UPDATE hours SET opening_hour = ?, closing_hour = ? WHERE hours_id = ?;";
+            jdbcTemplate.update(sqlHours, hour.getOpeningHour(), hour.getClosingHour(), hour.getHoursId());
+        }
+    }
+
     private Address getBreweryAddress(int addressId) {
         Address breweryAddress = new Address();
         String sql = "SELECT * FROM addresses WHERE address_id = ?;";

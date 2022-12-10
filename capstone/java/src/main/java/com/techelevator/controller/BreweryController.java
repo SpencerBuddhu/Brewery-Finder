@@ -36,6 +36,11 @@ public class BreweryController {
         userDao.upgradeUser(newBreweryDto);
     }
 
+    @RequestMapping(path = "/breweries/{breweryId}", method = RequestMethod.PUT)
+    public void updateBrewery(@RequestBody Brewery breweryToUpdate, @PathVariable int breweryId) {
+        breweryDao.updateBrewery(breweryToUpdate, breweryId);
+    }
+
 }
 
 
