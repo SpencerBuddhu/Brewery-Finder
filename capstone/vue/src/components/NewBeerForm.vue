@@ -38,6 +38,7 @@ export default {
     return {
       beer: {
         beerId: 0,
+        breweryId: this.$store.state.breweryId,
         beerName: '',
         beerType: '',
         beerAbv: 0.0,
@@ -51,7 +52,7 @@ export default {
   },
   methods: {
     addBeer() {
-      beerService.create(this.$store.state.breweryId, this.beer)
+      beerService.create(this.beer)
       .then(response => {
         if (response.status === 200) {
           this.addBeerError = false;

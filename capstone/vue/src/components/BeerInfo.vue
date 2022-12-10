@@ -38,7 +38,7 @@ export default {
         if (response.status === 200) {
           this.$store.commit('SET_CURRENT_BEER', response.data);
           this.beerId = response.data.beerId;
-          //this.breweryId = response.data.breweryId;
+          this.breweryId = response.data.breweryId;
           this.beerName = response.data.beerName;
           this.beerType = response.data.beerType;
           this.beerAbv = response.data.beerAbv;
