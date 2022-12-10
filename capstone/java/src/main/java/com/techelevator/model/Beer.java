@@ -3,6 +3,7 @@ package com.techelevator.model;
 public class Beer {
 
     private int beerId;
+    private int breweryId;
     private String beerName;
     private String beerDescription;
     private String beerImage;
@@ -11,8 +12,9 @@ public class Beer {
     private boolean isActive;
 
 
-    public Beer(int beerId, String beerName, String beerDescription, String beerImage, double beerAbv, String beerType, boolean isActive) {
+    public Beer(int beerId, int breweryId, String beerName, String beerDescription, String beerImage, double beerAbv, String beerType, boolean isActive) {
         this.beerId = beerId;
+        this.breweryId = breweryId;
         this.beerName = beerName;
         this.beerDescription = beerDescription;
         this.beerImage = beerImage;
@@ -78,5 +80,11 @@ public class Beer {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    public int getBreweryId() {return breweryId;}
+
+    public void setBreweryId(int breweryId) {
+        this.breweryId = breweryId;
     }
 }

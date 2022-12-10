@@ -17,10 +17,9 @@ public class BeerController {
         this.beerDao = beerDao;
     }
 
-
-    //TODO Works but maybe fix it up to look a bit cleaner
-    @RequestMapping(path = "/beers/{breweryId}", method = RequestMethod.GET)
-    public List<Beer> getBeersById (@PathVariable int breweryId, @RequestParam(required = false) String filter) {
+   // Get list of Beers
+    @RequestMapping(path = "/beers/", method = RequestMethod.GET)
+    public List<Beer> getBeersById (@RequestParam int breweryId, @RequestParam String filter) {
         String active = "active";
         String all = "all";
         if (Objects.equals(filter, active)) {
@@ -31,25 +30,29 @@ public class BeerController {
         else return null;
     }
 
-    @RequestMapping(path = "/beers/{breweryId}/{beerId}", method = RequestMethod.GET)
-    public Beer getBeerByBreweryId (@PathVariable int breweryId, @PathVariable int beerId) {
-        return beerDao.getBeer(breweryId, beerId);
+    // Get Beer
+    @RequestMapping(path = "/beers/{beerId}", method = RequestMethod.GET)
+    public Beer getBeer(@PathVariable int beerId) {
+        return beerDao.getBeer(beerId);
     }
 
-    @RequestMapping(path = "/beers/{breweryId}", method = RequestMethod.POST)
-    public void addBeer(@RequestBody Beer beer, @PathVariable int breweryId) {
-        beerDao.addBeer(beer, breweryId);
+    // Create Beer
+    @RequestMapping(path = "/beers", method = RequestMethod.POST)
+    public void addBeer(@RequestBody Beer beer) {
+        beerDao.addBeer(beer);
     }
 
+    // Update Beer
+    @RequestMapping(path = "/beers/{beerId}", method = RequestMethod.PUT)
+    public void updateBeer(@RequestBody Beer beer, @PathVariable int beerId) {
+        beerDao.updateBeer(beer, beerId);
+    }
 
+    // Delete(Deactivate) Beer
     @RequestMapping(path = "/beers/{beerId}", method = RequestMethod.DELETE)
     public void deleteBeer(@PathVariable int beerId) {
         beerDao.deleteBeer(beerId);
     }
 
-    @RequestMapping(path = "/beers/{beerId}", method = RequestMethod.POST)
-    public void activateBeer(@PathVariable int beerId) {
-        beerDao.activateBeer(beerId);
-    }
-
+    
 }

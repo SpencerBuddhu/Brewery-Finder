@@ -8,13 +8,13 @@ public interface BeerDao {
 
     List<Beer> listBeers(int breweryId);
 
-    Beer getBeer(int breweryId, int beerId);
+    Beer getBeer(int beerId);
 
-    void addBeer(Beer beer, int breweryId);
+    void addBeer(Beer beer);
 
     void deleteBeer(int beerId);
 
     public List<Beer> listActiveBeers(int breweryId);
 
-    public void activateBeer(int beerId);
+    public void updateBeer(Beer beer, int beerId);
 }
