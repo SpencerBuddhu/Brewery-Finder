@@ -1,7 +1,6 @@
 <template>
   <div class="new-brewery">
     <navigation></navigation>
-    <h2>Add a Brewery</h2>
     <new-brewery-form></new-brewery-form>
   </div>
 </template>

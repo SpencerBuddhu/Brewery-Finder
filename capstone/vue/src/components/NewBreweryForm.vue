@@ -1,35 +1,39 @@
 <template>
-  <form v-on:submit.prevent="addBrewery">
-    <div>
-      <label for="name">Brewery Name</label>
-      <input type="text" v-model="brewery.name" />
-    </div>
-    <div>
-      <label for="user">Select Brewer User</label>
-      <select name="user" v-model.number="brewery.userId">
-        <option value=""></option>
-        <option v-for="user in this.$store.state.users" v-bind:key="user.id" v-bind:value="user.id">{{ user.username }}</option>
-      </select>
-    </div>
-    <div>
-      <label for="streetAddress">Street Address</label>
-      <input type="text" v-model="brewery.streetAddress" />
-    </div>
-    <div>
-      <label for="city">City</label>
-      <input type="text" v-model="brewery.city" />
-    </div>
-    <div>
-      <label for="state">State</label>
-      <input type="text" v-model="brewery.state" />
-    </div>
-    <div>
-      <label for="zipcode">Zip Code</label>
-      <input type="text" v-model="brewery.zipcode" />
-    </div>
-    <button>Submit</button>
-    <p v-show="addBreweryError">{{ errorMessage }}</p>
-  </form>
+  <div class="container">
+    <h1>Add Brewery</h1>
+    <form class="form-card" v-on:submit.prevent="addBrewery">
+      <h2>Brewery Information</h2>
+      <div class="data-inputs">
+        <label for="name">Brewery Name</label>
+        <input type="text" class="form-control" v-model="brewery.name" required />
+      </div>
+      <div class="data-inputs">
+        <label for="user">Select Brewer User</label>
+        <select name="user" class="form-control" v-model.number="brewery.userId" required>
+          <option value=""></option>
+          <option v-for="user in this.$store.state.users" v-bind:key="user.id" v-bind:value="user.id">{{ user.username }}</option>
+        </select>
+      </div>
+      <div class="data-inputs">
+        <label for="streetAddress">Street Address</label>
+        <input type="text" class="form-control" v-model="brewery.streetAddress" required />
+      </div>
+      <div class="data-inputs">
+        <label for="city">City</label>
+        <input type="text" class="form-control" v-model="brewery.city" required />
+      </div>
+      <div class="data-inputs">
+        <label for="state">State</label>
+        <input type="text" class="form-control" v-model="brewery.state" required />
+      </div>
+      <div class="data-inputs">
+        <label for="zipcode">Zip Code</label>
+        <input type="text" class="form-control" v-model="brewery.zipcode" required />
+      </div>
+      <button class="btn">Submit</button>
+      <p v-show="addBreweryError">{{ errorMessage }}</p>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -99,6 +103,66 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.container {
+  font-family: Ubuntu, sans-serif;
+  width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+h1 {
+  font-size: 80px;
+  background-color: hsl(207, 13%, 34%);
+  color: hsl(0, 0%, 100%);
+  text-align: center;
+  border-radius: 16px;
+}
+h2 {
+  color: hsl(208, 49%, 24%);
+  margin-bottom: 8px;
+}
+.form-card {
+  width: 512px;
+  margin: 24px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 4px 8px 8px rgb(90, 90, 90);
+  margin-bottom: 24px;
+}
+.data-inputs {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+.data-inputs > label {
+  font-size: 18px;
+  color: hsl(208, 49%, 24%);
+  padding: 8px 0;
+}
+.form-control {
+  height: 32px;
+  font-size: 16px;
+  border: 1px solid hsl(208, 49%, 24%);
+  padding-left: 8px;
+}
+.btn {
+  width: 96px;
+  height: 48px;
+  font-size: 16px;
+  background-color: #0d6efd;
+  color: hsl(0, 0%, 100%);
+  padding: 0 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 16px;
+}
+.btn:hover {
+  background-color: #2b7df8;
+}
 </style>
