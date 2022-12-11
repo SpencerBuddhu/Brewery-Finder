@@ -1,7 +1,6 @@
 <template>
   <div class="manage-beers">
     <navigation></navigation>
-    <h1>Manage Beers</h1>
     <brewer-beer-list></brewer-beer-list>
   </div>
 </template>
@@ -21,7 +20,7 @@ export default {
 
 <style scoped>
 .manage-beers {
-  height: 100vh;
+  /* height: 100vh; */
   background-color: hsl(13, 100%, 72%);
 }
 </style>
