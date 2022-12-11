@@ -1,7 +1,6 @@
 <template>
   <div class="new-beer-page">
     <navigation></navigation>
-    <h1>Add a Beer</h1>
     <new-beer-form></new-beer-form>
   </div>
 </template>
@@ -21,7 +20,6 @@ export default {
 
 <style>
 .new-beer-page {
-  height: 100vh;
   background-color: hsl(13, 100%, 72%);
 }
 </style>

@@ -1,32 +1,40 @@
 <template>
-  <form v-on:submit.prevent="addBeer">
-    <div>
-      <label for="name">Beer Name</label>
-      <input type="text" v-model="beer.beerName" />
-    </div>
-    <div>
-      <label for="type">Beer Type</label>
-      <input type="text" v-model="beer.beerType" />
-    </div>
-    <div>
-      <label for="abv">Beer ABV</label>
-      <input type="number" step="0.1" v-model="beer.beerAbv" />
-    </div>
-    <div>
-      <label for="imageLink">Beer Image Link</label>
-      <input type="text" v-model="beer.beerImage" />
-    </div>
-    <div>
-      <label for="description">Beer Description</label>
-      <textarea name="description" cols="30" rows="10" v-model.lazy="beer.beerDescription"></textarea>
-    </div>
-    <div>
-      <label for="active">Beer Status</label>
-      <input type="checkbox" v-model="beer.active">
-    </div>
-    <button>Submit</button>
-    <p v-show="addBeerError">{{ errorMessage }}</p>
-  </form>
+  <div class="container">
+    <h1>Add a Beer</h1>
+    <form class="form-card" v-on:submit.prevent="addBeer">
+      <h2>Beer Information</h2>
+      <div class="data-inputs">
+        <label for="name">Beer Name</label>
+        <input type="text" class="form-control" v-model="beer.beerName" required />
+      </div>
+      <div class="data-inputs">
+        <label for="type">Beer Type</label>
+        <input type="text" class="form-control" v-model="beer.beerType" required />
+      </div>
+      <div class="data-inputs">
+        <label for="abv">Beer ABV</label>
+        <input type="number" class="form-control" step="0.1" v-model="beer.beerAbv" required />
+      </div>
+      <div class="data-inputs">
+        <label for="imageLink">Beer Image Link</label>
+        <input type="text" class="form-control" v-model="beer.beerImage" required />
+      </div>
+      <div class="data-inputs">
+        <label for="description">Beer Description</label>
+        <textarea name="description" class="text-area" cols="30" rows="8" v-model.lazy="beer.beerDescription"></textarea>
+      </div>
+      <div class="data-inputs">
+        <label for="active">Beer Status</label>
+        <div class="active-status">
+          <input class="checkbox" type="checkbox" v-model="beer.active">
+          <span v-show="beer.active">Active</span>
+          <span v-show="!beer.active">Inactive</span>
+        </div>
+      </div>
+      <button class="btn">Submit</button>
+      <p v-show="addBeerError">{{ errorMessage }}</p>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -86,6 +94,74 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.container {
+  font-family: Ubuntu, sans-serif;
+  width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+h1 {
+  font-size: 80px;
+  background-color: hsl(207, 13%, 34%);
+  color: hsl(0, 0%, 100%);
+  text-align: center;
+  border-radius: 16px;
+}
+h2 {
+  color: hsl(208, 49%, 24%);
+  margin-bottom: 8px;
+}
+.form-card {
+  width: 512px;
+  margin: 24px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 4px 8px 8px rgb(90, 90, 90);
+  margin-bottom: 24px;
+}
+.data-inputs {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+.data-inputs > label {
+  font-size: 18px;
+  color: hsl(208, 49%, 24%);
+  padding: 8px 0;
+}
+.form-control {
+  height: 32px;
+  font-size: 16px;
+  border: 1px solid hsl(208, 49%, 24%);
+  padding-left: 8px;
+}
+.text-area {
+  font-size: 16px;
+  border: 1px solid hsl(208, 49%, 24%);
+  padding: 8px;
+}
+.checkbox {
+  margin-right: 8px;
+}
+.btn {
+  width: 96px;
+  height: 48px;
+  font-size: 16px;
+  background-color: #0d6efd;
+  color: hsl(0, 0%, 100%);
+  padding: 0 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 16px;
+}
+.btn:hover {
+  background-color: #2b7df8;
+}
 </style>
