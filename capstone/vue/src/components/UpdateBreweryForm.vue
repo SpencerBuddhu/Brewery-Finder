@@ -1,62 +1,81 @@
 <template>
-  <form v-on:submit.prevent="updateBrewery">
-    <div>
-      <label for="name">Brewery Name</label>
-      <input type="text" v-model="breweryName" />
-    </div>
-    <div>
-      <label for="website">Brewery Website URL</label>
-      <input type="text" v-model="websiteUrl" />
-    </div>
-    <div>
-      <label for="email">Brewery Email Address</label>
-      <input type="email" v-model="emailAddress" />
-    </div>
-    <div>
-      <label for="telephone">Brewery Phone Number</label>
-      <input type="tel" v-model="phoneNumber" />
-    </div>
-    <div>
-      <label for="logo">Brewery Logo Link</label>
-      <input type="text" v-model="breweryLogo" />
-    </div>
-    <div>
-      <label for="image">Brewery Image Link</label>
-      <input type="text" v-model="breweryImage" />
-    </div>
-    <div>
-      <label for="history">Brewery History</label>
-      <textarea name="history" cols="30" rows="10" v-model.lazy="breweryHistory"></textarea>
-    </div>
-    <div>
-      <label for="active">Brewery Status</label>
-      <input type="checkbox" v-model="active">
-    </div>
-    <div>
-      <label for="streetAddress">Street Address</label>
-      <input type="text" v-model="streetAddress" />
-    </div>
-    <div>
-      <label for="city">City</label>
-      <input type="text" v-model="city" />
-    </div>
-    <div>
-      <label for="state">State</label>
-      <input type="text" v-model="state" />
-    </div>
-    <div>
-      <label for="zipcode">Zip Code</label>
-      <input type="text" v-model="zipcode" />
-    </div>
-    <div v-for="hour in hours" v-bind:key="hour.hoursId">
-      <label>{{ hour.day }}</label>
-      <input type="time" v-model="hour.openingHour">
-      <input type="time" v-model="hour.closingHour">
-    </div>
-    <button>Update Brewery Info</button>
-    <p v-show="updateSuccess">{{ successMessage}}</p>
-    <p v-show="updateFailure">{{ errorMessage }}</p>
-  </form>
+  <div class="container">
+    <h1>Manage Brewery</h1>
+    <form class="form-card" v-on:submit.prevent="updateBrewery">
+      <h2>Brewery Information</h2>
+      <div class="contact-info">
+        <div class="brewery-info">
+          <div class="data-inputs">
+            <label for="name">Brewery Name</label>
+            <input type="text" class="form-control" v-model="breweryName" />
+          </div>
+          <div class="data-inputs">
+            <label for="website">Brewery Website URL</label>
+            <input type="text" class="form-control" v-model="websiteUrl" />
+          </div>
+          <div class="data-inputs">
+            <label for="email">Brewery Email Address</label>
+            <input type="email" class="form-control" v-model="emailAddress" />
+          </div>
+          <div class="data-inputs">
+            <label for="telephone">Brewery Phone Number</label>
+            <input type="tel" class="form-control" v-model="phoneNumber" />
+          </div>
+        </div>
+        <div class="address-info">
+          <div class="data-inputs">
+            <label for="streetAddress">Street Address</label>
+            <input type="text" class="form-control" v-model="streetAddress" />
+          </div>
+          <div class="data-inputs">
+            <label for="city">City</label>
+            <input type="text" class="form-control" v-model="city" />
+          </div>
+          <div class="data-inputs">
+            <label for="state">State</label>
+            <input type="text" class="form-control" v-model="state" />
+          </div>
+          <div class="data-inputs">
+            <label for="zipcode">Zip Code</label>
+            <input type="text" class="form-control" v-model="zipcode" />
+          </div>
+        </div>
+      </div>
+      <div class="data-inputs">
+        <label for="logo">Brewery Logo Link</label>
+        <input type="text" class="form-control" v-model="breweryLogo" />
+      </div>
+      <div class="data-inputs">
+        <label for="image">Brewery Image Link</label>
+        <input type="text" class="form-control" v-model="breweryImage" />
+      </div>
+      <div class="data-inputs">
+        <label for="history">Brewery History</label>
+        <textarea name="history" cols="30" rows="8" class="text-area" v-model.lazy="breweryHistory"></textarea>
+      </div> 
+      
+      <h2>Business Hours</h2>
+      <div class="days-hours" v-for="hour in hours" v-bind:key="hour.hoursId">
+        <label class="day">{{ hour.day }}</label>
+        <div class="business-hours">
+          <input type="time" v-model="hour.openingHour">
+          <span>to</span>
+          <input type="time" v-model="hour.closingHour">
+        </div>
+      </div>
+      <div class="data-inputs">
+        <h2>Brewery Status</h2>
+        <div class="active-status">
+          <input class="checkbox" type="checkbox" v-model="active">
+          <span v-show="active">Active</span>
+          <span v-show="!active">Inactive</span>
+        </div>
+      </div>
+      <button class="btn">Update Brewery Info</button>
+      <p class="success" v-show="updateSuccess">{{ successMessage}}</p>
+      <p class="failure" v-show="updateFailure">{{ errorMessage }}</p>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -167,6 +186,104 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.container {
+  font-family: Ubuntu, sans-serif;
+  width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+h1 {
+  font-size: 80px;
+  background-color: hsl(207, 13%, 34%);
+  color: hsl(0, 0%, 100%);
+  text-align: center;
+  border-radius: 16px;
+}
+h2 {
+  color: hsl(208, 49%, 24%);
+  margin-bottom: 8px;
+}
+.form-card {
+  width: 1024px;
+  margin: 24px auto 0 auto;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 4px 8px 8px rgb(90, 90, 90);
+  margin-bottom: 24px;
+}
+.contact-info {
+  display: flex;
+  justify-content: space-between;
+}
+.brewery-info, .address-info {
+  width: 384px;
+}
+.data-inputs {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+.data-inputs > label {
+  font-size: 18px;
+  color: hsl(208, 49%, 24%);
+  padding: 8px;
+}
+.form-control {
+  height: 32px;
+  font-size: 16px;
+  border: 1px solid hsl(208, 49%, 24%);
+  padding-left: 8px;
+}
+.text-area {
+  font-size: 16px;
+  border: 1px solid hsl(208, 49%, 24%);
+  padding: 8px;
+}
+.days-hours {
+  display: flex;
+  margin-bottom: 8px;
+}
+.day {
+  width: 104px;
+  font-size: 16px;
+  color: hsl(208, 49%, 24%);
+  padding-left: 8px;
+}
+.business-hours {
+  width: 256px;
+  display: flex;
+  justify-content: space-around;
+}
+.checkbox {
+  margin-right: 8px;
+}
+.active-status {
+  padding-left: 8px;
+}
+.btn {
+  height: 48px;
+  font-size: 16px;
+  background-color: #0d6efd;
+  color: hsl(0, 0%, 100%);
+  padding: 0 8px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 16px;
+}
+.btn:hover {
+  background-color: #2b7df8;
+}
+.success {
+  padding: 8px;
+  color: #198754;
+}
+.failure {
+  padding: 8px;
+  color: #dc3545;
+}
 </style>

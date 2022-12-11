@@ -1,7 +1,6 @@
 <template>
   <div class="manage-brewery">
     <navigation></navigation>
-    <h1>Manage Brewery</h1>
     <update-brewery-form></update-brewery-form>
   </div>
 </template>
@@ -21,7 +20,7 @@ export default {
 
 <style scoped>
 .manage-brewery {
-  height: 100vh;
+  /* height: 100vh; */
   background-color: hsl(13, 100%, 72%);
 }
 </style>
