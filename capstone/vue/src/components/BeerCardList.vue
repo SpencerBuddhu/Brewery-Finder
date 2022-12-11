@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <beer-card v-for="beer in this.$store.state.beers" v-bind:key="beer.beerId" v-bind:beer="beer"></beer-card>
+  <div class="container">
+    <h2>Our Beer Selection</h2>
+    <div class="beer-card-list">
+      <beer-card v-for="beer in this.$store.state.beers" v-bind:key="beer.beerId" v-bind:beer="beer"></beer-card>
+    </div>
   </div>
 </template>
 
@@ -42,6 +45,20 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.container {
+  width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  font-family: Ubuntu, sans-serif;
+}
+h2 {
+  text-align: center;
+}
+.beer-card-list {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
 </style>

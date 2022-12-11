@@ -25,7 +25,6 @@ export default {
 
 <style scoped>
 .brewery {
-  height: 100vh;
   background-color: hsl(13, 100%, 72%);
 }
 </style>

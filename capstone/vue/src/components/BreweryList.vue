@@ -1,9 +1,12 @@
 <template>
   <div class="brewery-list">
-    <div class="brewery-card" v-for="brewery in this.$store.state.breweries" v-bind:key="brewery.breweryId">
-      <img v-bind:src="brewery.breweryLogo" v-bind:alt="brewery.breweryName" v-on:click="goToBrewery(brewery.breweryId)">
-      <router-link v-bind:to="{ name: 'brewery', params: {id: brewery.breweryId}}">{{brewery.breweryName}}</router-link>
-      <p class="location">{{brewery.address.city}}, {{brewery.address.state}}</p>
+    <h1>Brewery List</h1>
+    <div class="brewery-card-list">
+      <div class="brewery-card" v-for="brewery in this.$store.state.breweries" v-bind:key="brewery.breweryId">
+        <img v-bind:src="brewery.breweryLogo" v-bind:alt="brewery.breweryName" v-on:click="goToBrewery(brewery.breweryId)">
+        <router-link v-bind:to="{ name: 'brewery', params: {id: brewery.breweryId}}">{{brewery.breweryName}}</router-link>
+        <p class="location">{{brewery.address.city}}, {{brewery.address.state}}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -34,6 +37,27 @@ export default {
 }
 </script>
 <style scoped>
+.brewery-list {
+  font-family: Ubuntu, sans-serif;
+  width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+h1 {
+  font-size: 80px;
+  background-color: hsl(207, 13%, 34%);
+  color: hsl(0, 0%, 100%);
+  text-align: center;
+  border-radius: 16px;
+}
+.brewery-card-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .brewery-card {
   width: 1024px;
   height: 256px;

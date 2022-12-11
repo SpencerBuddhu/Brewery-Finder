@@ -1,16 +1,18 @@
 <template>
-  <div>
+  <div class="container">
     <h1>{{ beerName }}</h1>
-    <img v-bind:src="beerImage" v-bind:alt="beerName">
-    <div>
-      <p>Beer Name:</p>
-      <p>{{ beerName }}</p>
-      <p>Beer Type:</p>
-      <p>{{ beerType }}</p>
-      <p>Beer ABV:</p>
-      <p>{{ beerAbv }}</p>
-      <p>Beer Description:</p>
-      <p>{{ beerDescription }}</p>
+    <div class="beer-info">
+      <img class="beer-image" v-bind:src="beerImage" v-bind:alt="beerName">
+      <div>
+        <p>Beer Name:</p>
+        <p>{{ beerName }}</p>
+        <p>Beer Type:</p>
+        <p>{{ beerType }}</p>
+        <p>Beer ABV:</p>
+        <p>{{ beerAbv }}</p>
+        <p>Beer Description:</p>
+        <p>{{ beerDescription }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -67,6 +69,26 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.container {
+  font-family: Ubuntu, sans-serif;
+  width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+h1 {
+  font-size: 80px;
+  background-color: hsl(207, 13%, 34%);
+  color: hsl(0, 0%, 100%);
+  text-align: center;
+  border-radius: 16px;
+}
+.beer-info {
+  display: flex;
+}
+.beer-image {
+  width: 512px;
+}
 </style>
