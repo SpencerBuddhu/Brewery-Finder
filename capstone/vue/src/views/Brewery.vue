@@ -3,7 +3,7 @@
     <navigation></navigation>
     <brewery-info></brewery-info>
     <beer-card-list></beer-card-list>
-    <router-link v-bind:to="{ name: 'breweries'}">Back to Breweries</router-link>
+    <!-- <router-link v-bind:to="{ name: 'breweries'}">Back to Breweries</router-link> -->
   </div>
 </template>
 

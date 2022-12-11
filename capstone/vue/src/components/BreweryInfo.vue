@@ -3,31 +3,44 @@
     <h1>{{breweryName}}</h1>
     <div class="container">
       <div class="brewery-contact-info">
-        <img class="brewery-logo" v-bind:src="breweryLogo" v-bind:alt="breweryName + ' logo'">
-        <p>{{ address }}</p>
-        <p>{{ phoneNumber }}</p>
-        <p>{{ emailAddress }}</p>
-        <p>{{ websiteUrl }}</p>
-        <table>
-          <thead>
-            <tr>
-              <th>Day</th>
-              <th>Open</th>
-              <th>Close</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="hour in businessHours" v-bind:key="hour.hoursId">
-              <td>{{ hour.day }}</td>
-              <td>{{ hour.openingHour }}</td>
-              <td>{{ hour.closingHour }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="img-container">
+          <img class="brewery-logo" v-bind:src="breweryLogo" v-bind:alt="breweryName + ' logo'">
+        </div>
+        <div class="contact-info">
+          <h3>Contact Us</h3>
+          <p>{{ streetAddress }}</p>
+          <p>{{ address }}</p>
+          <a class="links" v-bind:href="'tel:' + phoneNumber">{{ phoneNumber }}</a>
+          <a class="links" v-bind:href="'mailto:' + emailAddress">{{ emailAddress }}</a>
+          <a class="links" v-bind:href="websiteUrl">{{ websiteUrl }}</a>
+        </div>
+        <div class="business-hours">
+          <h3>Business Hours</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Open</th>
+                <th>Close</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="hour in businessHours" v-bind:key="hour.hoursId">
+                <td>{{ hour.day }}</td>
+                <td>{{ hour.openingHour }}</td>
+                <td>{{ hour.closingHour }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div class="brewery-history">
+      <div class="brewery-description">
         <img class="brewery-image" v-bind:src="breweryImage" v-bind:alt="breweryName + ' image'">
-        <p>{{ breweryHistory }}</p>
+        <div class="brewery-history">
+          <h3>Brewery History</h3>
+          <p class="brewery-desc">{{ breweryHistory }}</p>
+        </div>
+        
       </div>
     </div>
   </div>
@@ -57,7 +70,7 @@ export default {
   },
     computed: {
         address() {
-            return `${this.streetAddress}, ${this.city}, ${this.state} ${this.zipcode}`;
+            return `${this.city}, ${this.state} ${this.zipcode}`;
         },
         businessHours() {
           return this.hours.map(hour => {
@@ -134,13 +147,73 @@ h1 {
 }
 .container {
   display: flex;
+  justify-content: space-between;
+  margin: 16px 0;
 }
-.brewery-logo {
+.brewery-contact-info {
+  width: 256px;
+  color: hsl(208, 49%, 24%);
+}
+.brewery-description {
+  width: 992px;
+}
+.img-container {
   width: 256px;
   height: 256px;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+  box-shadow: 4px 8px 8px rgb(90, 90, 90);
+}
+.brewery-logo {
+  width: 240px;
+  height: 240px;
+}
+.contact-info {
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 4px 8px 8px rgb(90, 90, 90);
+}
+.links {
+  display: block;
+  margin: 4px 0;
+  text-decoration: none;
+  color: hsl(208, 49%, 24%);
+}
+.links:visited {
+  color: hsl(208, 49%, 24%);
+}
+.business-hours {
+  width: 256px;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 0;
+  box-shadow: 4px 8px 8px rgb(90, 90, 90);
+}
+table {
+  margin-top: 8px;
 }
 .brewery-image {
-  height: 512px;
-  width: 1024px;
+  /* height: 512px; */
+  width: 992px;
+  border-radius: 16px;
+  box-shadow: 4px 8px 8px rgb(90, 90, 90);
+}
+.brewery-history {
+  color: hsl(208, 49%, 24%);
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 16px;
+  padding: 16px;
+  margin: 16px 0;
+  box-shadow: 4px 8px 8px rgb(90, 90, 90);
 }
 </style>

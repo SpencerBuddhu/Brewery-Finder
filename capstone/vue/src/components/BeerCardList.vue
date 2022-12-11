@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2>Our Beer Selection</h2>
+    <h2>Current Selection</h2>
     <div class="beer-card-list">
       <beer-card v-for="beer in this.$store.state.beers" v-bind:key="beer.beerId" v-bind:beer="beer"></beer-card>
     </div>
@@ -54,11 +54,16 @@ export default {
   font-family: Ubuntu, sans-serif;
 }
 h2 {
+  font-size: 48px;
+  background-color: hsl(207, 13%, 34%);
+  color: hsl(0, 0%, 100%);
   text-align: center;
+  border-radius: 16px;
 }
 .beer-card-list {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  margin: 32px 0;
 }
 </style>
