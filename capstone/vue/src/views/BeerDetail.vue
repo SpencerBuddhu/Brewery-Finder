@@ -20,7 +20,7 @@ export default {
 
 <style scoped>
 .beer-detail {
-  height: 100vh;
+  /* height: 100vh; */
   background-color: hsl(13, 100%, 72%);
 }
 </style>

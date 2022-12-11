@@ -3,7 +3,10 @@
     <h1>{{ beerName }}</h1>
     <div class="beer-info">
       <img class="beer-image" v-bind:src="beerImage" v-bind:alt="beerName">
-      <div>
+      <div class="beer-details">
+        <h2>Beer Information</h2>
+        <p>Brewery Name:</p>
+        <p>{{ this.$store.state.currentBrewery.breweryName }}</p>
         <p>Beer Name:</p>
         <p>{{ beerName }}</p>
         <p>Beer Type:</p>
@@ -87,8 +90,21 @@ h1 {
 }
 .beer-info {
   display: flex;
+  justify-content: space-around;
+  margin: 16px 0;
 }
 .beer-image {
   width: 512px;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 16px;
+  box-shadow: 4px 8px 8px rgb(90, 90, 90);
+}
+.beer-details {
+  width: 512px;
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(207, 13%, 34%);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 4px 8px 8px rgb(90, 90, 90);
 }
 </style>
