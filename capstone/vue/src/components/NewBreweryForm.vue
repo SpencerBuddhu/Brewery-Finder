@@ -11,7 +11,7 @@
         <label for="user">Select Brewer User</label>
         <select name="user" class="form-control" v-model.number="brewery.userId" required>
           <option value=""></option>
-          <option v-for="user in this.$store.state.users" v-bind:key="user.id" v-bind:value="user.id">{{ user.username }}</option>
+          <option v-for="user in this.$store.state.beerLovers" v-bind:key="user.id" v-bind:value="user.id">{{ user.username }}</option>
         </select>
       </div>
       <div class="data-inputs">
@@ -61,7 +61,10 @@ export default {
       userService.list()
       .then(response => {
         if (response.status === 200) {
+          console.log(response);
           this.$store.commit('SET_BEER_LOVERS', response.data);
+        } else {
+          console.log(response);
         }
       })
     },
