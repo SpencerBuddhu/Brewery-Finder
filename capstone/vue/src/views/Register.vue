@@ -124,6 +124,9 @@ export default {
   font-size: 64px;
   margin-bottom: 32px;
 }
+.main-card > p {
+  font-size: 20px;
+}
 .form-register {
   display: flex;
   width: 500px;

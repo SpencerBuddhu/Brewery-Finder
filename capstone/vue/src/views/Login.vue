@@ -3,7 +3,7 @@
     <div class="cta">
       <div class="main-card">
         <h1>Brewery Finder</h1>
-        <p>Join our community of beer lovers. Find breweries and view their fine selection of beers. Leave a rating or review of a beer and follow your favorite brewery to stay up-to-date.</p>
+        <p class="description">Join our community of beer lovers. Find breweries and view their fine selection of beers. Leave a rating or review of a beer and follow your favorite brewery to stay up-to-date.</p>
       </div>
     </div>
     <div id="login" class="text-center">
@@ -108,6 +108,9 @@ export default {
 .main-card > h1 {
   font-size: 64px;
   margin-bottom: 32px;
+}
+.main-card > p {
+  font-size: 20px;
 }
 .form-signin {
   display: flex;
