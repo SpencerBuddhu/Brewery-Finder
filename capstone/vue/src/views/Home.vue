@@ -4,19 +4,19 @@
     <div class="container">
       <h1>Cheers!</h1>
       <div class="card-list">
-        <div>
+        <div class="nav-card">
           <router-link v-bind:to="{ name: 'breweries' }">View all Breweries</router-link>
         </div>
-        <div v-if="isBrewer">
+        <div class="nav-card" v-if="isBrewer">
           <router-link v-bind:to="{ name: 'brewery', params: { id: breweryId } }">My Brewery</router-link>
         </div>
-        <div v-if="isBrewer">
+        <div class="nav-card" v-if="isBrewer">
           <router-link v-bind:to="{ name: 'manageBrewery' }">Manage Brewery</router-link>
         </div>
-        <div v-if="isBrewer">
+        <div class="nav-card" v-if="isBrewer">
           <router-link v-bind:to="{ name: 'manageBeers' }">Manage Beers</router-link>
         </div>
-        <div v-if="isAdmin">
+        <div class="nav-card" v-if="isAdmin">
           <router-link v-bind:to="{ name: 'addBrewery' }"> Add Brewery</router-link>
         </div>
       </div>
@@ -91,6 +91,29 @@ h1 {
   font-size: 80px;
   background-color: hsl(207, 13%, 34%);
   color: hsl(0, 0%, 100%);
-  padding: 0 256px;
+  padding: 0 512px;
+  border-radius: 16px;
+}
+.card-list {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-around;
+  width: 1280px;
+}
+.nav-card {
+  width: 256px;
+  height: 256px;
+  background-color: hsl(0, 0%, 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  box-shadow: 4px 8px 8px rgb(90, 90, 90);
+}
+a {
+  text-decoration: none;
+  font-size: 32px;
+  color: hsl(208, 49%, 24%);
+  text-align: center;
 }
 </style>

@@ -7,21 +7,26 @@
 
 <style scoped>
 .nav {
-  font-family: Ubuntu, sans-serif;
-  
+  font-family: Overpass, sans-serif;
   display: flex;
   justify-content: flex-end;
-  padding: 32px 48px;
+  width: 1280px;
+  padding: 32px 0;
+  margin: 0 auto;
 }
 a {
   text-decoration: none;
+  background-color: hsl(353, 100%, 62%);
   color: hsl(0, 0%, 100%);
-  margin-right: 16px;
+  padding: 8px 16px;
+  margin-right: 24px;
+  font-size: 24px;
+  border-radius: 8px;
 }
 a:hover {
-  color: hsl(240, 2%, 79%);
+  color: hsl(207, 13%, 34%);
 }
-.router-link-exact-active {
-  font-weight: 500;
-}
+/* .router-link-exact-active {
+  font-weight: 600;
+} */
 </style>
