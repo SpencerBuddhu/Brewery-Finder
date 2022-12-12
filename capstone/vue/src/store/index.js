@@ -25,6 +25,7 @@ export default new Vuex.Store({
     beers: [],
     currentBrewery: {},
     currentBeer: {},
+    currentBeerReviews: [],
     breweryId: 0,
     brewerBrewery: {},
     brewerBeers: {}
@@ -77,6 +78,9 @@ export default new Vuex.Store({
     },
     SET_CURRENT_BEER(state, data) {
       state.currentBeer = data;
+    },
+    SET_CURRENT_BEER_REVIEWS(state, data) {
+      state.currentBeerReviews = data;
     }
   }
 })
