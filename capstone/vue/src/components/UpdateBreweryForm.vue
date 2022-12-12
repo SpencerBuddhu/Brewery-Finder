@@ -67,8 +67,8 @@
         <h2>Brewery Status</h2>
         <div class="active-status">
           <input class="checkbox" type="checkbox" v-model="active">
-          <span v-show="active">Active</span>
-          <span v-show="!active">Inactive</span>
+          <span v-show="active">Active&nbsp;&nbsp;(Brewery will display in Brewery List)</span>
+          <span v-show="!active">Inactive&nbsp;&nbsp;(Brewery will not display in Brewery List)</span>
         </div>
       </div>
       <button class="btn">Update Brewery Info</button>
