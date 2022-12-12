@@ -173,7 +173,7 @@ export default {
 .form-signin-alt {
   display: flex;
   width: 500px;
-  /* height: 400px; */
+  height: 400px;
   flex-direction: column;
   align-items: center;
   background-color: hsl(0, 0%, 100%);
