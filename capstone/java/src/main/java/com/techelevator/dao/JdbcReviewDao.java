@@ -22,10 +22,10 @@ public class JdbcReviewDao implements ReviewDao {
     @Override
     public List<Review> listReviews(int beerId) {
         List<Review> reviews = new ArrayList<>();
-        String sql =    "SELECT * FROM reviews a " +
-                        "JOIN beer_reviews b ON a.review_id = b.review_id " +
-                        "WHERE beer_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        String sql =    "SELECT * FROM reviews  \n" +
+                        "JOIN beer_reviews ON beer_reviews.review_id = reviews.review_id \n" +
+                        "WHERE beer_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, beerId);
         while (results.next()) {
             Review review = mapRowToReview(results);
             reviews.add(review);
@@ -33,7 +33,7 @@ public class JdbcReviewDao implements ReviewDao {
         return reviews;
     }
 
-    @Override
+   /* @Override
     public Review getReviewById(int reviewId) {
         Review review = null;
         String sql = "SELECT * FROM reviews WHERE review_id = ?;";
@@ -42,23 +42,23 @@ public class JdbcReviewDao implements ReviewDao {
             review = mapRowToReview(results);
         }
         return review;
-    }
+    }*/
 
     /* ????? */
     @Override
     public void addReview(Review aReview) {
-        String sqlAddReview = "INSERT INTO reviews (review_text, user_id, image) VALUES(?,?,?) RETURNING review_id";
-        int newReviewId = jdbcTemplate.queryForObject(sqlAddReview, int.class, aReview.getReviewText(), aReview.getUserId(), aReview.getImage());
+        String sqlAddReview = "INSERT INTO reviews (review_text, user_id, image, rating) VALUES(?, ?, ?, ?) RETURNING review_id";
+        int newReviewId = jdbcTemplate.queryForObject(sqlAddReview, int.class, aReview.getReviewText(), aReview.getUserId(), aReview.getImage(), aReview.getRating());
         String sqlBeerReviews = "INSERT INTO beer_reviews (beer_id, review_id) VALUES(?, ?)";
-        jdbcTemplate.update(sqlBeerReviews, aReview.getReviewId(), newReviewId);
+        jdbcTemplate.update(sqlBeerReviews, aReview.getBeerId(), newReviewId);
 
     }
 
-    @Override
+   /* @Override
     public void updateReview(Review review, int reviewId) {
         String sql = "UPDATE reviews SET review_text = ?, user_id = ?, image = ?";
         jdbcTemplate.update(sql, review.getReviewText(), review.getUserId(), review.getImage());
-    }
+    }*/
 
     private Review mapRowToReview(SqlRowSet results) {
         Review review = new Review();
@@ -66,6 +66,8 @@ public class JdbcReviewDao implements ReviewDao {
         review.setReviewText(results.getString("review_text"));
         review.setUserId(results.getInt("user_id"));
         review.setImage(results.getString("image"));
+        review.setRating(results.getInt("rating"));
+        review.setBeerId(results.getInt("beer_id"));
         return review;
     }
 }

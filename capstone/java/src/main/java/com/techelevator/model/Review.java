@@ -4,7 +4,17 @@ public class Review {
     private int reviewId;
     private String reviewText;
     private int userId;
+    private int rating;
     private String image;
+    private int beerId;
+
+    public int getBeerId() {return beerId;}
+
+    public void setBeerId(int beerId) {this.beerId = beerId;}
+
+    public int getRating() {return rating;}
+
+    public void setRating(int rating) {this.rating = rating;}
 
     public int getReviewId() {
         return reviewId;

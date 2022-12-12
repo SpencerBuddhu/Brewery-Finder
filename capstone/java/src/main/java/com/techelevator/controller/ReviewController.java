@@ -18,27 +18,21 @@ public class ReviewController {
         this.reviewDao = reviewDao;
     }
 
-    // List Reviews
-    @RequestMapping(path = "/reviews/{beerId}", method = RequestMethod.GET)
-    public List<Review> listReviews(@PathVariable int beerId) {
-            return  reviewDao.listReviews(beerId);
+    // Add Review
+    @RequestMapping(path = "/reviews", method = RequestMethod.POST)
+    public void addReview(@RequestBody Review aReview) {
+        reviewDao.addReview(aReview);
     }
 
-    // Get Review By Id
+    /*// Get Review By Id
     @RequestMapping(path = "/reviews/{reviewId}", method = RequestMethod.GET)
     public Review getReviewById(@PathVariable int reviewId) {
         return reviewDao.getReviewById(reviewId);
-    }
+    }*/
 
-    // Add Review
-    @RequestMapping(path = "/reviews", method = RequestMethod.POST)
-    public void addReview(@RequestBody Review review) {
-        reviewDao.addReview(review);
-    }
-
-    // Update Review
+    /* // Update Review
     @RequestMapping(path = "/reviews/{reviewId}", method = RequestMethod.PUT)
     public void updateReview(@RequestBody Review review, @PathVariable int reviewId) {
         reviewDao.updateReview(review, reviewId);
-    }
+    }*/
 }

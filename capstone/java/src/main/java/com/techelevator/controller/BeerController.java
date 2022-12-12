@@ -1,7 +1,9 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.BeerDao;
+import com.techelevator.dao.ReviewDao;
 import com.techelevator.model.Beer;
+import com.techelevator.model.Review;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,9 +14,11 @@ import java.util.Objects;
 public class BeerController {
 
     private BeerDao beerDao;
+    private ReviewDao reviewDao;
 
-    public BeerController(BeerDao beerDao) {
+    public BeerController(BeerDao beerDao, ReviewDao reviewDao) {
         this.beerDao = beerDao;
+        this.reviewDao = reviewDao;
     }
 
    // Get list of Beers
@@ -52,6 +56,12 @@ public class BeerController {
     @RequestMapping(path = "/beers/{beerId}", method = RequestMethod.DELETE)
     public void deleteBeer(@PathVariable int beerId) {
         beerDao.deleteBeer(beerId);
+    }
+
+    // List Reviews for a beer
+    @RequestMapping(path = "/beers/{beerId}/reviews", method = RequestMethod.GET)
+    public List<Review> listReviews(@PathVariable int beerId) {
+        return reviewDao.listReviews(beerId);
     }
 
 }
