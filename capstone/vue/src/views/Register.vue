@@ -2,8 +2,13 @@
 <div class="container">
   <div class="cta">
     <div class="main-card">
-      <h1>Brewery Finder</h1>
-      <p>Join our community of beer lovers. Find breweries and view their fine selection of beers. Leave a rating or review of a beer and follow your favorite brewery to stay up-to-date.</p>
+      <div class="main-banner">
+        <img class="main-logo" src="../assets/main_logo.png" alt="Cheers! Brewery Finder Logo">
+        <div class="main-header">
+          <h1 class="main-heading">Brewery Finder</h1>
+          <p class="description">Join our community of beer lovers. Find breweries and view their fine selection of beers. Leave a rating or review of a beer and follow your favorite brewery to stay up-to-date.</p>
+        </div>
+      </div>
       <div class="form-container-alt">
         <form class="form-register-alt" @submit.prevent="register">
           <h2 class="h3 mb-3 font-weight-normal">Create Account</h2>
@@ -159,15 +164,25 @@ export default {
   background-color: hsl(207, 13%, 34%);
   /* border: 2px solid black; */
   border-radius: 16px;
-  text-align: center;
+  /* text-align: center; */
   padding: 64px;
   box-shadow: 8px 8px 8px rgb(64, 64, 64);
 }
-.main-card > h1 {
-  font-size: 64px;
-  margin-bottom: 32px;
+.main-banner {
+  display: flex;
+  align-items: center;
 }
-.main-card > p {
+.main-logo {
+  width: 250px;
+}
+.main-header {
+  padding: 0 32px;
+}
+.main-heading {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+.description {
   font-size: 20px;
 }
 .form-register {
