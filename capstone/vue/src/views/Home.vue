@@ -82,23 +82,23 @@ export default {
   font-family: Ubuntu, sans-serif;
 }
 .container {
+  width: 1280px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 h1 {
   font-size: 80px;
   background-color: hsl(207, 13%, 34%);
   color: hsl(0, 0%, 100%);
-  padding: 0 512px;
+  text-align: center;
   border-radius: 16px;
 }
 .card-list {
   margin-top: 80px;
   display: flex;
   justify-content: space-around;
-  width: 1280px;
 }
 .nav-card {
   width: 256px;
