@@ -1,8 +1,11 @@
 <template>
   <div class="container">
     <h2>Reviews</h2>
+    <div class="btn-container">
+      <button class="btn blue" v-on:click="goToAddReview">Add Review</button>
+    </div>
     <div class="review-card-list">
-      <review-card v-for="review in this.$store.state.currentBeerReviews" v-bind:key="review.reviewId" v-bind:review="review"></review-card>
+      <review-card v-for="review in this.reviews" v-bind:key="review.reviewId" v-bind:review="review"></review-card>
     </div>
   </div>
 </template>
@@ -16,14 +19,23 @@ export default {
   components: {
     ReviewCard
   },
+  data() {
+    return {
+      reviews: []
+    }
+  },
   methods: {
     getBeerReviews() {
       reviewService.list(this.$route.params.id)
       .then(response => {
         if (response.status === 200) {
           this.$store.commit('SET_CURRENT_BEER_REVIEWS', response.data);
+          this.reviews = response.data;
         }
       });
+    },
+    goToAddReview() {
+      this.$router.push({name: 'addReview'});
     }
   },
   created() {
@@ -39,6 +51,7 @@ export default {
   display: flex;
   flex-direction: column;
   font-family: Ubuntu, sans-serif;
+  padding: 32px 0;
 }
 h2 {
   font-size: 48px;
@@ -47,8 +60,28 @@ h2 {
   text-align: center;
   border-radius: 16px;
 }
-.review-card-list {
+.btn-container {
+  width: 1024px;
+  margin: 24px auto;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
+}
+.btn {
+  width: 96px;
+  height: 48px;
+  font-size: 16px;
+  color: hsl(0, 0%, 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.blue {
+  background-color: #0d6efd;
+}
+.review-card-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: 32px;
 }
 </style>

@@ -1,12 +1,13 @@
 <template>
   <div class="review-card">
-    <img v-if="this.review.img" v-bind:src="this.review.img" alt="User provided photo">
-    <div class="review-info">
+    <!-- <img v-bind:src="review.img" alt="User provided photo"> -->
+
       <div class="rating">
-        <img src="../assets/mug.png" v-bind:alt="this.review.rating + ' Beer Review'" v-for="n in this.review.rating" v-bind:key="n">
+        <p class="rating-heading">Beer Rating:</p>
+        <img class="review-icon" src="../assets/mug.png" v-bind:alt="review.rating + ' Beer Review'" v-for="n in review.rating" v-bind:key="n">
       </div>
-      <p>{{ this.review.reviewText }}</p>
-    </div>
+      <p>"{{ review.reviewText }}"</p>
+
   </div>
 </template>
 
@@ -18,5 +19,24 @@ export default {
 </script>
 
 <style scoped>
-
+.review-card {
+  width: 512px;
+  height: 192px;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 16px;
+  box-shadow: 4px 8px 8px rgb(90, 90, 90);
+  padding: 32px;
+}
+.review-icon {
+  width: 48px;
+}
+.rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.rating-heading {
+  color: hsl(208, 49%, 24%);
+  font-size: 24px;
+}
 </style>
