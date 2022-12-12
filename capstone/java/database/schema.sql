@@ -54,20 +54,13 @@ CREATE TABLE reviews (
     review_id serial,
     review_text text NOT NULL,
     user_id int NOT NULL,
+    rating int NOT NULL,
     image varchar(300),
 
     constraint pk_reviews PRIMARY KEY (review_id),
     constraint fk_reviews FOREIGN KEY (user_id) references users (user_id)
 );
 
-CREATE TABLE ratings (
-    rating_id serial,
-    rating int NOT NULL,
-    user_id int NOT NULL,
-
-    constraint pk_ratings PRIMARY KEY (rating_id),
-    constraint fk_ratings FOREIGN KEY (user_id) references users (user_id)
-);
 
 CREATE TABLE hours (
     hours_id serial,
@@ -115,15 +108,6 @@ CREATE TABLE likes (
     constraint pk_likes PRIMARY KEY (user_id, brewery_id),
     constraint fk_likes FOREIGN KEY (user_id) references users (user_id),
     constraint fk_likes_b FOREIGN KEY (brewery_id) references breweries (brewery_id)
-);
-
-CREATE TABLE beer_ratings (
-    beer_id int NOT NULL,
-    rating_id int NOT NULL,
-
-    constraint pk_beer_ratings PRIMARY KEY (beer_id, rating_id),
-    constraint fk_br FOREIGN KEY (beer_id) references beers (beer_id),
-    constraint fk_br2 FOREIGN KEY (rating_id) references ratings (rating_id)
 );
 
 CREATE TABLE beer_reviews (

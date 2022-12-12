@@ -224,17 +224,50 @@ INSERT INTO breweries_beers (brewery_id, beer_id) VALUES(4, 20);
 INSERT INTO breweries_beers (brewery_id, beer_id) VALUES(4, 21);
 
 -- REVIEWS
-INSERT INTO reviews (review_text, user_id, image) 
-VALUES('I buy this beer weekly and cant get enough. Very crisp and refreshing. It''s also one of the few beers my lady will actually drink. Wish you sold 6 packs!', 5, '');
+INSERT INTO reviews (review_text, user_id, image, rating)
+VALUES('I buy this beer weekly and cant get enough. Very crisp and refreshing. It''s also one of the few beers my lady will actually drink. Wish you sold 6 packs!', 5, '', 3);
 
-INSERT INTO reviews (review_text, user_id, image) 
-VALUES('Nice pilsner style with great flavor. More hops would make it perfect.', 6, '');
+INSERT INTO reviews (review_text, user_id, image, rating)
+VALUES('Nice pilsner style with great flavor. More hops would make it perfect.', 6, '', 5);
 
-INSERT INTO reviews (review_text, user_id, image) 
-VALUES('Had to give it a shot after the GABF win. A well perfected pilsner with that grainy malty flavor perfectly balanced with some hop flavor.', 7, '');
+INSERT INTO reviews (review_text, user_id, image, rating)
+VALUES('Had to give it a shot after the GABF win. A well perfected pilsner with that grainy malty flavor perfectly balanced with some hop flavor.', 7, '', 4);
 
-INSERT INTO reviews (review_text, user_id, image) 
-VALUES('The Standard is always my beach beer Standard!', 8, '');
+INSERT INTO reviews (review_text, user_id, image, rating)
+VALUES('The Standard is always my beach beer Standard!', 8, '', 5);
+
+INSERT INTO reviews (review_text, user_id, image, rating) 
+VALUES('This has been my go-to pale ale every since I became acquainted with MadeWest.', 1, 'https://cdn.shopify.com/s/files/1/2653/8302/products/IMG_4656_1_540x.jpg?v=1569289539', 4);
+
+INSERT INTO reviews (review_text, user_id, image, rating) 
+VALUES('Love this west coast!! Notes of pineapple, melon, mango and stone fruit. Not too bitter and just really drinkable. Don''t change a thing MadeWest!', 2, 'https://cdn.shopify.com/s/files/1/2653/8302/products/Box_With_Ice_Pack_88ba34c1-7229-4dc7-b6b0-c895aceda5dd_900x.jpg?v=1631570420', 3);
+
+INSERT INTO reviews (review_text, user_id, image, rating) 
+VALUES ('Love this beer! I live in NorCal and have all their beers shipped to me. This one is my favorite so far.', 3, 'https://cdn.shopify.com/s/files/1/2653/8302/products/Guided_Smile_2_900x.jpg?v=1623885259', 3);
+
+INSERT INTO reviews (review_text, user_id, image, rating) 
+VALUES ('Ventura Light is the best and most refreshing light beer I have ever had especially when enjoying in a frosted glass!', 5, 'https://cdn.shopify.com/s/files/1/2653/8302/products/Ventura_Light_White_Background_1800x1800_2305d084-3745-4588-9460-2ce39f8a6078_1800x1800.jpg?v=1575926498', 5);
+
+INSERT INTO reviews (review_text, user_id, image, rating) 
+VALUES ('Tasting Notes: Tropical, Dank, Citrus.', 7, 'https://cdn.shopify.com/s/files/1/0278/5506/1057/products/ChiefPeakIPA_6pack_2021_WEB_900x.png?v=1633119433', 2);
+
+INSERT INTO reviews (review_text, user_id, image, rating) 
+VALUES ('Finally, you reach a clearing, the mist lifts, and there sits your reward: an icy can of Spectro Hazy IPA.', 8, 'https://cdn.shopify.com/s/files/1/0278/5506/1057/products/SpectroHazyIPA_6pack_2021_WEB_900x.png?v=1633119587', 1);
+
+INSERT INTO reviews (review_text, user_id, image, rating) 
+VALUES ('Reward: you sink into your hammock with a Dos Topas in hand and let the cool, crisp taste wash over you.', 9, 'https://cdn.shopify.com/s/files/1/0278/5506/1057/products/DosTopasLager_6pack_2021_WEB_900x.png?v=1633119493', 5);
+
+INSERT INTO reviews (review_text, user_id, image, rating) 
+VALUES ('Love this beer!', 1, 'https://cdn.shopify.com/s/files/1/0319/3965/7863/products/Pixie_1024x1024@2x.jpg?v=1649295680', 4);
+
+INSERT INTO reviews (review_text, user_id, image, rating) 
+VALUES ('This one is my favorite so far.', 2, 'https://cdn.shopify.com/s/files/1/0319/3965/7863/products/SugarBush_df63f737-fd9e-43e4-a29c-5c232860561b_110x110@2x.jpg?v=1649300479', 2);
+
+INSERT INTO reviews (review_text, user_id, image, rating) 
+VALUES ('A much-needed break from your usual “hazy” routine.', 7, 'https://craftpeak-cooler-images.imgix.net/poseidon-brewing-co/Airhog-Apricot-Poseidon-Brewing-Brand-Photography-14.jpg?auto=compress%2Cformat&fit=scale&h=900&ixlib=php-3.3.0&w=600&wpsize=tile&s=ab143985ad157d30e08edfbf14674f73', 5);
+
+INSERT INTO reviews (review_text, user_id, image, rating) 
+VALUES ('Best for Holiday parties, nights by the fire, and satisfying that sweet tooth.', 8, 'https://craftpeak-cooler-images.imgix.net/poseidon-brewing-co/Amphibious-Poseidon-Brewing-Co-Dec2018-023.jpg?auto=compress%2Cformat&fit=scale&h=900&ixlib=php-3.3.0&w=600&wpsize=tile&s=c04fdab17f60d5fe91f9a9ad0d480c52', 4);
 
 -- BEER_REVIEWS
 
@@ -242,6 +275,17 @@ INSERT INTO beer_reviews (beer_id, review_id) VALUES(1, 1);
 INSERT INTO beer_reviews (beer_id, review_id) VALUES(1, 2);
 INSERT INTO beer_reviews (beer_id, review_id) VALUES(1, 3);
 INSERT INTO beer_reviews (beer_id, review_id) VALUES(1, 4);
+INSERT INTO beer_reviews (beer_id, review_id) VALUES(2, 5);
+INSERT INTO beer_reviews (beer_id, review_id) VALUES(3, 6);
+INSERT INTO beer_reviews (beer_id, review_id) VALUES(4, 7);
+INSERT INTO beer_reviews (beer_id, review_id) VALUES(5, 8);
+INSERT INTO beer_reviews (beer_id, review_id) VALUES(7, 9);
+INSERT INTO beer_reviews (beer_id, review_id) VALUES(8, 10);
+INSERT INTO beer_reviews (beer_id, review_id) VALUES(9, 11);
+INSERT INTO beer_reviews (beer_id, review_id) VALUES(11, 12);
+INSERT INTO beer_reviews (beer_id, review_id) VALUES(12, 13);
+INSERT INTO beer_reviews (beer_id, review_id) VALUES(17, 14);
+INSERT INTO beer_reviews (beer_id, review_id) VALUES(18, 15);
 
 -- HOURS
 INSERT INTO hours (day_id) VALUES ('1');
