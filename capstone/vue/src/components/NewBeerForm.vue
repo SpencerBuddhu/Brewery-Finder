@@ -31,7 +31,10 @@
           <span v-show="!beer.active">Inactive</span>
         </div>
       </div>
-      <button class="btn">Submit</button>
+      <div class="btn-container">
+        <button class="btn blue">Submit</button>
+        <button class="btn red" type="button" v-on:click="goBack">Cancel</button>
+      </div>
       <p v-show="addBeerError">{{ errorMessage }}</p>
     </form>
   </div>
@@ -89,6 +92,9 @@ export default {
         beerDescription: '',
         active: false
       };
+    },
+    goBack() {
+      this.$router.push({ name: 'manageBeers' });
     }
   }
 }
@@ -149,11 +155,15 @@ h2 {
 .checkbox {
   margin-right: 8px;
 }
+.btn-container {
+  width: 256px;
+  display: flex;
+  justify-content: space-evenly;
+}
 .btn {
   width: 96px;
   height: 48px;
   font-size: 16px;
-  background-color: #0d6efd;
   color: hsl(0, 0%, 100%);
   padding: 0 8px;
   border: none;
@@ -161,7 +171,10 @@ h2 {
   cursor: pointer;
   margin-top: 16px;
 }
-.btn:hover {
-  background-color: #2b7df8;
+.blue {
+  background-color: #0d6efd;
+}
+.red {
+  background-color: #dc3545;
 }
 </style>
