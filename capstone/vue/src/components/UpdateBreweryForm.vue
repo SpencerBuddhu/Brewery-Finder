@@ -71,7 +71,10 @@
           <span v-show="!active">Inactive&nbsp;&nbsp;(Brewery will not display in Brewery List)</span>
         </div>
       </div>
-      <button class="btn">Update Brewery Info</button>
+      <div class="btn-container">
+        <button class="btn blue">Update</button>
+        <button class="btn red" v-on:click="goHome">Cancel</button>
+      </div>
       <p class="success" v-show="updateSuccess">{{ successMessage}}</p>
       <p class="failure" v-show="updateFailure">{{ errorMessage }}</p>
     </form>
@@ -178,6 +181,9 @@ export default {
           this.errorMessage = 'Error submitting form. Request could not be created.';
         }
       });
+    },
+    goHome() {
+      this.$router.push({ name: 'home' });
     }
   },
   created() {
@@ -264,10 +270,15 @@ h2 {
 .active-status {
   padding-left: 8px;
 }
+.btn-container {
+  width: 256px;
+  display: flex;
+  justify-content: space-evenly;
+}
 .btn {
   height: 48px;
+  width: 80px;
   font-size: 16px;
-  background-color: #0d6efd;
   color: hsl(0, 0%, 100%);
   padding: 0 8px;
   border: none;
@@ -275,8 +286,11 @@ h2 {
   cursor: pointer;
   margin-top: 16px;
 }
-.btn:hover {
-  background-color: #2b7df8;
+.blue {
+  background-color: #0d6efd;
+}
+.red {
+  background-color: #dc3545;
 }
 .success {
   padding: 8px;

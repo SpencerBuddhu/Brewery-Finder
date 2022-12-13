@@ -30,7 +30,10 @@
         <label for="zipcode">Zip Code</label>
         <input type="text" class="form-control" v-model="brewery.zipcode" required />
       </div>
-      <button class="btn">Submit</button>
+      <div class="btn-container">
+        <button class="btn blue">Submit</button>
+        <button class="btn red" type="button" v-on:click="goBack">Cancel</button>
+      </div>
       <p v-show="addBreweryError">{{ errorMessage }}</p>
     </form>
   </div>
@@ -97,6 +100,9 @@ export default {
         state: '',
         zipcode: ''
       };
+    },
+    goBack() {
+      this.$router.push({ name: 'home' });
     }
   },
   created() {
@@ -153,11 +159,15 @@ h2 {
   border: 1px solid hsl(208, 49%, 24%);
   padding-left: 8px;
 }
+.btn-container {
+  width: 256px;
+  display: flex;
+  justify-content: space-evenly;
+}
 .btn {
   width: 96px;
   height: 48px;
   font-size: 16px;
-  background-color: #0d6efd;
   color: hsl(0, 0%, 100%);
   padding: 0 8px;
   border: none;
@@ -165,7 +175,11 @@ h2 {
   cursor: pointer;
   margin-top: 16px;
 }
-.btn:hover {
-  background-color: #2b7df8;
+
+.blue {
+  background-color: #0d6efd;
+}
+.red {
+  background-color: #dc3545;
 }
 </style>
