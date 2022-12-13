@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Beer;
+import com.techelevator.model.Review;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -12,8 +13,11 @@ import java.util.List;
 public class JdbcBeerDao implements BeerDao {
 
     private JdbcTemplate jdbcTemplate;
-    public JdbcBeerDao(JdbcTemplate jdbcTemplate) {
+    private ReviewDao reviewDao;
+
+    public JdbcBeerDao(JdbcTemplate jdbcTemplate, ReviewDao reviewDao) {
         this.jdbcTemplate = jdbcTemplate;
+        this.reviewDao = reviewDao;
     }
 
 
@@ -90,8 +94,22 @@ public class JdbcBeerDao implements BeerDao {
         beer.setBeerAbv(results.getDouble("abv"));
         beer.setBeerType(results.getString("beer_type"));
         beer.setActive(results.getBoolean("is_active"));
+        beer.setAverageRating(getBeerAverageRating(beer.getBeerId()));
         return beer;
     }
 
+    private int getBeerAverageRating(int beerId) {
+        List<Review> reviews = reviewDao.listReviews(beerId);
+        double average = 0;
+        int sum = 0;
+        for (Review review : reviews) {
+            sum += review.getRating();
+        }
+        if (sum != 0) {
+            average = sum / reviews.size();
+        }
+
+        return (int)average;
+    }
 
 }

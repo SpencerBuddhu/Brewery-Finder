@@ -10,9 +10,9 @@ public class Beer {
     private double beerAbv;
     private String beerType;
     private boolean isActive;
+    private int averageRating;
 
-
-    public Beer(int beerId, int breweryId, String beerName, String beerDescription, String beerImage, double beerAbv, String beerType, boolean isActive) {
+    public Beer(int beerId, int breweryId, String beerName, String beerDescription, String beerImage, double beerAbv, String beerType, boolean isActive, int averageRating) {
         this.beerId = beerId;
         this.breweryId = breweryId;
         this.beerName = beerName;
@@ -21,6 +21,7 @@ public class Beer {
         this.beerAbv = beerAbv;
         this.beerType = beerType;
         this.isActive = isActive;
+        this.averageRating = averageRating;
     }
 
     public Beer() {}
@@ -86,5 +87,13 @@ public class Beer {
 
     public void setBreweryId(int breweryId) {
         this.breweryId = breweryId;
+    }
+
+    public int getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(int averageRating) {
+        this.averageRating = averageRating;
     }
 }
