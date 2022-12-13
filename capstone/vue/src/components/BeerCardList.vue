@@ -61,9 +61,10 @@ h2 {
   border-radius: 16px;
 }
 .beer-card-list {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  row-gap: 32px;
   margin: 32px 0;
 }
 </style>
