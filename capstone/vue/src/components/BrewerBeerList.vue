@@ -9,7 +9,7 @@
         <img v-bind:src="beer.beerImage" v-bind:alt="beer.beerName" v-on:click="viewBeer(beer.beerId)">
         <div class="beer-and-rating">
           <router-link v-bind:to="{ name: 'beers', params: {id: beer.beerId}}">{{ beer.beerName }}</router-link>
-          <p>Avg Rating: <span>5</span></p>
+          <p>Avg Rating: <span v-if="beer.averageRating">{{ beer.averageRating }}/5</span><span v-else>No ratings available</span></p>
         </div>
         <div class="btn-container">
           <button class="btn green" v-on:click="viewBeer(beer.beerId)">View</button>

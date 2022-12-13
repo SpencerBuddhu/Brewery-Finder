@@ -27,7 +27,8 @@
         </div>
         <div class="beer-data">
           <p class="beer-property">Average Rating:</p>
-          <p class="beer-value"></p>
+          <p class="beer-value" v-if="averageRating">{{ averageRating }}/5</p>
+          <p class="beer-value" v-else>No Ratings Available</p>
         </div>
       </div>
     </div>
@@ -47,7 +48,8 @@ export default {
       beerType: '',
       beerAbv: 0.0,
       beerImage: '',
-      beerDescription: ''
+      beerDescription: '',
+      averageRating: 0
     }
   },
   methods: {
@@ -63,6 +65,7 @@ export default {
           this.beerAbv = response.data.beerAbv;
           this.beerImage = response.data.beerImage;
           this.beerDescription = response.data.beerDescription;
+          this.averageRating = response.data.averageRating;
         } else {
           console.log(response.status);
         }
