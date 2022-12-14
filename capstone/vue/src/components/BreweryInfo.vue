@@ -12,7 +12,7 @@
           <p>{{ address }}</p>
           <a class="links" v-bind:href="'tel:' + phoneNumber">{{ phoneNumber }}</a>
           <a class="links" v-bind:href="'mailto:' + emailAddress">{{ emailAddress }}</a>
-          <a class="links" v-bind:href="websiteUrl">{{ websiteUrl }}</a>
+          <a class="links" target="_blank" v-bind:href="websiteUrl">{{ websiteUrl }}</a>
         </div>
         <div class="business-hours">
           <h3>Business Hours</h3>
