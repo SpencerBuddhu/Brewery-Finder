@@ -60,7 +60,7 @@ public class JdbcBreweryDao implements BreweryDao {
     public void addBrewery(NewBreweryDto newBreweryDto) {
         String sqlAddresses = "INSERT INTO addresses (street_address, city, state, zipcode) VALUES (?, ?, ?, ?) RETURNING address_id;";
         int addressId = jdbcTemplate.queryForObject(sqlAddresses, int.class, newBreweryDto.getStreetAddress(), newBreweryDto.getCity(), newBreweryDto.getState(), newBreweryDto.getZipcode());
-        String sqlBrewery = "INSERT INTO breweries (brewery_name, user_id, address_id, is_active) VALUES (?, ?, ?, true) RETURNING brewery_id";
+        String sqlBrewery = "INSERT INTO breweries (brewery_name, user_id, address_id, is_active) VALUES (?, ?, ?, false) RETURNING brewery_id";
         int breweryId = jdbcTemplate.queryForObject(sqlBrewery, int.class, newBreweryDto.getName(), newBreweryDto.getUserId(), addressId);
         for (int dayId = 1; dayId <= 7; dayId++) {
             String sqlHours = "INSERT INTO hours (day_id) VALUES (?) RETURNING hours_id;";
