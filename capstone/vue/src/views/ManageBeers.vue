@@ -20,7 +20,7 @@ export default {
 
 <style scoped>
 .manage-beers {
-  /* height: 100vh; */
+  min-height: 100vh;
   background-color: hsl(13, 100%, 72%);
 }
 </style>
