@@ -113,7 +113,6 @@ public class JdbcBreweryDao implements BreweryDao {
         brewery.setUserId(results.getInt("user_id"));
         brewery.setWebsiteUrl(results.getString("website_url"));
         brewery.setEmailAddress(results.getString("email_address"));
-        //brewery.setAddressId(results.getInt("address_id"));
         brewery.setPhoneNumber(results.getString("phone_number"));
         brewery.setBreweryHistory(results.getString("brewery_history"));
         brewery.setBreweryLogo(results.getString("brewery_logo"));

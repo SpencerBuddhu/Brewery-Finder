@@ -18,11 +18,13 @@ public class UserController {
         this.userDao = userDao;
     }
 
+    // Get List of Users
     @RequestMapping(path = "/users", method = RequestMethod.GET)
     public List<User> listUsers() {
         return userDao.findAllBeerLovers();
     }
 
+    // Get BreweryId by UserId
     @RequestMapping(path = "/users/{userId}", method = RequestMethod.GET)
     public int findBreweryIdByUserId(@PathVariable int userId) {
         return userDao.findBreweryIdByUserId(userId);

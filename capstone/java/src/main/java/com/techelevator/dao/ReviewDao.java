@@ -9,8 +9,4 @@ public interface ReviewDao {
 
     void addReview(Review aReview);
 
-    /*Review getReviewById(int reviewId);*/
-
-    /*void updateReview(Review review, int reviewId);*/
-
 }

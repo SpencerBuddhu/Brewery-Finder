@@ -35,7 +35,6 @@ public class Brewery {
 
     public Brewery(){}
 
-
     public int getBreweryId() {
         return breweryId;
     }

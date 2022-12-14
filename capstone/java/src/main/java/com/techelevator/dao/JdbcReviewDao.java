@@ -33,18 +33,6 @@ public class JdbcReviewDao implements ReviewDao {
         return reviews;
     }
 
-   /* @Override
-    public Review getReviewById(int reviewId) {
-        Review review = null;
-        String sql = "SELECT * FROM reviews WHERE review_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, reviewId);
-        if (results.next()) {
-            review = mapRowToReview(results);
-        }
-        return review;
-    }*/
-
-    /* ????? */
     @Override
     public void addReview(Review aReview) {
         String sqlAddReview = "INSERT INTO reviews (review_text, user_id, image, rating) VALUES(?, ?, ?, ?) RETURNING review_id";
@@ -53,12 +41,6 @@ public class JdbcReviewDao implements ReviewDao {
         jdbcTemplate.update(sqlBeerReviews, aReview.getBeerId(), newReviewId);
 
     }
-
-   /* @Override
-    public void updateReview(Review review, int reviewId) {
-        String sql = "UPDATE reviews SET review_text = ?, user_id = ?, image = ?";
-        jdbcTemplate.update(sql, review.getReviewText(), review.getUserId(), review.getImage());
-    }*/
 
     private Review mapRowToReview(SqlRowSet results) {
         Review review = new Review();

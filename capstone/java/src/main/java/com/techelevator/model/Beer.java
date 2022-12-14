@@ -85,9 +85,7 @@ public class Beer {
 
     public int getBreweryId() {return breweryId;}
 
-    public void setBreweryId(int breweryId) {
-        this.breweryId = breweryId;
-    }
+    public void setBreweryId(int breweryId) {this.breweryId = breweryId;}
 
     public int getAverageRating() {
         return averageRating;

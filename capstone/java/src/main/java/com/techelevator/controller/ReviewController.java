@@ -24,15 +24,4 @@ public class ReviewController {
         reviewDao.addReview(aReview);
     }
 
-    /*// Get Review By Id
-    @RequestMapping(path = "/reviews/{reviewId}", method = RequestMethod.GET)
-    public Review getReviewById(@PathVariable int reviewId) {
-        return reviewDao.getReviewById(reviewId);
-    }*/
-
-    /* // Update Review
-    @RequestMapping(path = "/reviews/{reviewId}", method = RequestMethod.PUT)
-    public void updateReview(@RequestBody Review review, @PathVariable int reviewId) {
-        reviewDao.updateReview(review, reviewId);
-    }*/
 }
